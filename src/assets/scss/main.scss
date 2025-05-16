@@ -1,0 +1,48 @@
+// Import modern-normalize
+// https://github.com/sindresorhus/modern-normalize
+@use "../../../node_modules/modern-normalize/modern-normalize";
+
+// Mixin for a cool animated gradient background
+@mixin animated-gradient {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient-bg 15s ease infinite;
+}
+
+@keyframes gradient-bg {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+body {
+  color: white;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  @include animated-gradient;
+  color: #fff;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 1.5rem;
+  text-shadow: 0 2px 8px rgb(0 0 0 / 20%);
+}
+
+.logo {
+  width: 200px;
+  height: auto;
+  filter: drop-shadow(0 4px 16px rgb(0 0 0 / 30%));
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  &:hover {
+    transform: scale(1.08) rotate(-3deg);
+  }
+}
