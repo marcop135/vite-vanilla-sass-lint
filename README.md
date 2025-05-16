@@ -1,6 +1,6 @@
 # 🚀 Vite Vanilla JS & Sass Supercharged Starter
 
-A fast, modern template for vanilla JavaScript and Sass, powered by [Vite](https://vitejs.dev/). This setup includes comprehensive linting for HTML, CSS, and JS, uses modern-normalize for CSS resets, and demonstrates a streamlined, framework-free approach to frontend development. Enjoy optimized performance, strict code quality, and robust legacy browser support.
+A fast, modern template for vanilla JavaScript and Sass, powered by [Vite](https://vitejs.dev/). A fast setup with comprehensive linting with ESLint, Stylelint, and HTMLHint. It uses modern-normalize, minifies HTML, optimizes images, and showcases a streamlined, framework-free approach to frontend development. Enjoy optimized performance, strict code quality, and robust legacy browser support.
 
 ## ✨ Features
 
