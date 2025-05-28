@@ -16,10 +16,4 @@ Thumbs.db
 *.env
 *.local
 
-# Test coverage
-coverage
 
-# Cypress artifacts
-cypress/screenshots/
-cypress/videos/
-cypress/downloads/
