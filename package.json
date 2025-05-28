@@ -1,5 +1,5 @@
 {
-  "name": "vite-vanilla-no-js-no-css",
+  "name": "vite-vanilla-sass-lint",
   "version": "1.1.0",
   "type": "module",
   "scripts": {
@@ -7,19 +7,19 @@
     "build": "vite build",
     "preview": "vite preview"
   },
-  "description": "A modern one-page website for `marcopontili.com`.",
+  "description": "Vite Vanilla JS & Sass Supercharged Starter — A fast setup with comprehensive linting with ESLint, Stylelint, and HTMLHint. It uses modern-normalize, minifies HTML, optimizes images, and showcases a streamlined, framework-free approach to frontend development.",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/marcop135/vite-vanilla-no-js-no-css.git"
+    "url": "git+https://github.com/marcop135/vite-vanilla-sass-lint.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/marcop135/vite-vanilla-no-js-no-css/issues"
+    "url": "https://github.com/marcop135/vite-vanilla-sass-lint/issues"
   },
-  "homepage": "https://github.com/marcop135/vite-vanilla-no-js-no-css#readme",
+  "homepage": "https://github.com/marcop135/vite-vanilla-sass-lint#readme",
   "devDependencies": {
     "@vitejs/plugin-legacy": "^6.1.1",
     "autoprefixer": "^10.4.21",
