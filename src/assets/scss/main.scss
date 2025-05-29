@@ -27,14 +27,16 @@ body {
 
 .container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   height: 100vh;
   @include animated-gradient;
   color: #fff;
-  font-family: "Segoe UI", Arial, sans-serif;
-  font-size: 1.5rem;
-  text-shadow: 0 2px 8px rgb(0 0 0 / 20%);
+}
+
+main {
+  padding: 1.5rem;
 }
 
 .logo {
@@ -42,7 +44,22 @@ body {
   height: auto;
   filter: drop-shadow(0 4px 16px rgb(0 0 0 / 30%));
   transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  margin-top: 3rem;
   &:hover {
     transform: scale(1.08) rotate(-3deg);
+  }
+}
+
+footer {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  padding: 1.5rem;
+  color: white;
+  text-shadow: 0 0 3px rgb(0 0 0 / 90%);
+
+  a {
+    color: #b0d8ff;
+    text-decoration: underline;
   }
 }
