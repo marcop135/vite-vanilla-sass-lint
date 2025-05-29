@@ -7,7 +7,7 @@
     "build": "vite build",
     "preview": "vite preview"
   },
-  "description": "Vite Vanilla JS & Sass Supercharged Starter — A fast setup with comprehensive linting with ESLint, Stylelint, and HTMLHint. It uses modern-normalize, minifies HTML, optimizes images, and showcases a streamlined, framework-free approach to frontend development.",
+  "description": "Vite Vanilla JS + Sass starter with ESLint, Stylelint and HTMLHint linting, image optimization, modern-normalize.",
   "main": "index.js",
   "repository": {
     "type": "git",
