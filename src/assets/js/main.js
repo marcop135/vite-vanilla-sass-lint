@@ -3,7 +3,7 @@ import "../scss/main.scss";
 import viteLogo from "../images/vite.svg";
 
 document.querySelector("#app").innerHTML = /*html*/ `
-    <div class="container">
+    <div class="wrapper">
       <main>
         <img src="${viteLogo}" class="logo" alt="Vite logo" />
       </main>

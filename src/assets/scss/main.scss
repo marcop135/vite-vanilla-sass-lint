@@ -25,11 +25,11 @@ body {
   color: white;
 }
 
-.container {
+.wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
+  text-align: center;
   height: 100vh;
   @include animated-gradient;
   color: #fff;
@@ -45,15 +45,13 @@ main {
   filter: drop-shadow(0 4px 16px rgb(0 0 0 / 30%));
   transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   margin-top: 3rem;
+  margin-bottom: 1rem;
   &:hover {
     transform: scale(1.08) rotate(-3deg);
   }
 }
 
 footer {
-  position: relative;
-  width: 100%;
-  text-align: center;
   padding: 1.5rem;
   color: white;
   text-shadow: 0 0 3px rgb(0 0 0 / 90%);
