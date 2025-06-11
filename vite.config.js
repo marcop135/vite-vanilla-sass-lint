@@ -1,24 +1,24 @@
 // vite.config.js
-import { defineConfig } from "vite";
-import viteImagemin from "vite-plugin-imagemin";
-import { createHtmlPlugin } from "vite-plugin-html";
-import legacy from "@vitejs/plugin-legacy";
-import stylelint from "vite-plugin-stylelint";
-import eslint from "vite-plugin-eslint2";
+import { defineConfig } from 'vite';
+import viteImagemin from 'vite-plugin-imagemin';
+import { createHtmlPlugin } from 'vite-plugin-html';
+import legacy from '@vitejs/plugin-legacy';
+import stylelint from 'vite-plugin-stylelint';
+import eslint from 'vite-plugin-eslint2';
 
 export default defineConfig({
-  root: "./",
+  root: './',
 
   server: {
     port: 3000,
     open: false,
     watch: {
-      ignored: ["**/.stylelintcache", "**/.eslintcache"],
+      ignored: ['**/.stylelintcache', '**/.eslintcache'],
     },
   },
 
   build: {
-    minify: "terser", // Ensure Terser is used for production build
+    minify: 'terser', // Ensure Terser is used for production build
     terserOptions: {
       compress: {
         drop_console: true, // Remove all console logs
@@ -61,10 +61,10 @@ export default defineConfig({
       svgo: {
         plugins: [
           {
-            name: "removeViewBox",
+            name: 'removeViewBox',
           },
           {
-            name: "removeEmptyAttrs",
+            name: 'removeEmptyAttrs',
             active: false,
           },
         ],
@@ -87,7 +87,7 @@ export default defineConfig({
     // Vite plugin for generating legacy builds
     // https://github.com/vitejs/vite/tree/main/packages/plugin-legacy
     legacy({
-      targets: ["defaults", "not IE 11"],
+      targets: ['defaults', 'not IE 11'],
     }),
   ],
 });
