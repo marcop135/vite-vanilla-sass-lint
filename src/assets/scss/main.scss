@@ -2,7 +2,6 @@
 // https://github.com/sindresorhus/modern-normalize
 @use '../../../node_modules/modern-normalize/modern-normalize';
 
-// Mixin for a cool animated gradient background
 @mixin animated-gradient {
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
@@ -21,43 +20,58 @@
   }
 }
 
-body {
-  color: white;
-}
-
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  height: 100vh;
   @include animated-gradient;
+
+  min-height: 100vh;
+
+  text-align: center;
   color: #fff;
 }
 
 main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  min-height: 85vh;
   padding: 1.5rem;
 }
 
 .logo {
+  display: flex;
+  align-items: center;
+
   width: 200px;
   height: auto;
+
   filter: drop-shadow(0 4px 16px rgb(0 0 0 / 30%));
+
   transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  margin-top: 3rem;
-  margin-bottom: 1rem;
+
   &:hover {
     transform: scale(1.08) rotate(-3deg);
   }
 }
 
 footer {
+  flex-shrink: 0;
+  height: 15vh;
   padding: 1.5rem;
-  color: white;
+
   text-shadow: 0 0 3px rgb(0 0 0 / 90%);
 
   a {
     color: #b0d8ff;
     text-decoration: underline;
+
+    transition: all 0.2s;
+
+    &:hover {
+      color: #fff;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 3px;
+    }
   }
 }
