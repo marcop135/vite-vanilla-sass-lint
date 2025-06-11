@@ -12,7 +12,15 @@ export default defineConfig([
     },
     rules: {
       semi: ['error', 'always'],
+      quotes: ['error', 'single'],
+      'no-console': 'off',
       'no-unused-vars': 'warn',
+      'no-debugger': 'off',
+      'no-undef': 'warn',
+      'no-empty': 'off',
+      'no-mixed-spaces-and-tabs': 'off',
+      eqeqeq: 'off',
+      camelcase: 'off',
     },
   },
 ]);
