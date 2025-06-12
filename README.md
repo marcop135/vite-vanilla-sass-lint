@@ -67,6 +67,8 @@ npm run dev
 npm run dev       # Start dev server
 npm run build     # Build for production
 npm run preview   # Preview production build
+npm run lint      # Lint html, css, scss, and js files
+npm run format    # Format html, css, scss, js, and md files
 ```
 
 ---
@@ -79,6 +81,13 @@ Includes:
 - `stylelint` – Lint CSS/SCSS
 - `htmlhint` – Lint HTML/JSX
 - `prettier` – Format code
+
+### 📌 Run automatically:
+
+```bash
+npm run lint
+npm run format
+```
 
 ### 📌 Run manually:
 
