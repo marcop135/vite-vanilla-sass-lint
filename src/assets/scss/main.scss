@@ -2,6 +2,7 @@
 // https://github.com/sindresorhus/modern-normalize
 @use '../../../node_modules/modern-normalize/modern-normalize';
 
+// Add background gradient animation
 @mixin animated-gradient {
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
@@ -20,9 +21,19 @@
   }
 }
 
+// Use Variables
+:root {
+  --light-blue: #b0d8ff;
+}
+
+// Style page elements
 .wrapper {
   @include animated-gradient;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   min-height: 100vh;
 
   text-align: center;
@@ -30,45 +41,39 @@
 }
 
 main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-  min-height: 85vh;
+  margin-left: auto;
+  margin-right: auto;
+
   padding: 1.5rem;
-}
 
-.logo {
-  display: flex;
-  align-items: center;
+  .logo {
+    width: 200px;
+    height: auto;
 
-  width: 200px;
-  height: auto;
+    filter: drop-shadow(0 4px 16px rgb(0 0 0 / 30%));
 
-  filter: drop-shadow(0 4px 16px rgb(0 0 0 / 30%));
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 
-  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-
-  &:hover {
-    transform: scale(1.08) rotate(-3deg);
+    &:hover,
+    &:focus {
+      transform: scale(1.08) rotate(-3deg);
+    }
   }
 }
 
 footer {
-  flex-shrink: 0;
-  height: 15vh;
   padding: 1.5rem;
 
   text-shadow: 0 0 3px rgb(0 0 0 / 90%);
 
   a {
-    color: #b0d8ff;
+    color: var(--light-blue);
     text-decoration: underline;
 
     transition: all 0.2s;
 
-    &:hover {
+    &:hover,
+    &:focus {
       color: #fff;
       text-decoration-thickness: 2px;
       text-underline-offset: 3px;
