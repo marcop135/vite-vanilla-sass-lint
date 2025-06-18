@@ -1,4 +1,4 @@
-# 🚀 Vite Vanilla JS & Sass Supercharged Starter
+# 🚀 Vite Vanilla JS + Sass — No-Fuss Starter
 
 A fast, modern starter template for vanilla JavaScript and Sass, powered by [Vite](https://vitejs.dev/).  
 Includes comprehensive linting, formatting, image optimization, HTML minification, and legacy browser support.  

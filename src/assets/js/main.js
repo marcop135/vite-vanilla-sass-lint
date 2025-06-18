@@ -5,6 +5,7 @@ import viteLogo from '../images/vite.svg';
 document.querySelector('#app').innerHTML = /*html*/ `
     <div class="wrapper">
       <main>
+        <h1>Vite + Sass, No Fuss</h1>
         <img src="${viteLogo}" class="logo" alt="Vite logo" />
       </main>
       <footer>
