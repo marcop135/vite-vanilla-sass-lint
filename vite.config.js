@@ -19,9 +19,26 @@ export default defineConfig({
 
   build: {
     minify: 'terser', // Ensure Terser is used for production build
+    sourcemap: 'hidden', // Generate source maps but don't reference them in production
     terserOptions: {
       compress: {
         drop_console: true, // Remove all console logs
+      },
+    },
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Separate vendor chunks for better caching
+          vendor: [],
+        },
+        chunkFileNames: 'assets/js/[name]-[hash].js',
+        entryFileNames: 'assets/js/[name]-[hash].js',
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name && assetInfo.name.endsWith('.css')) {
+            return 'assets/css/[name]-[hash][extname]';
+          }
+          return 'assets/[name]-[hash][extname]';
+        },
       },
     },
   },
@@ -52,7 +69,7 @@ export default defineConfig({
         optimizationLevel: 7,
       },
       mozjpeg: {
-        quality: 20,
+        quality: 80,
       },
       pngquant: {
         quality: [0.8, 0.9],

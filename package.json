@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint \"src/assets/js/**/*.js\" && stylelint \"src/assets/**/*.{css,scss}\" && htmlhint \"**/*.html\"",
+    "lint": "npx eslint \"src/assets/js/**/*.js\" && npx stylelint \"src/assets/**/*.{css,scss}\" && npx htmlhint \"**/*.html\"",
     "format": "prettier --write 'src/**/*.{js,css,scss,html,md}'"
   },
   "description": "Vite Vanilla JS + Sass starter with ESLint, Stylelint and HTMLHint linting, image optimization, modern-normalize.",
@@ -15,8 +15,19 @@
     "type": "git",
     "url": "git+https://github.com/marcop135/vite-vanilla-sass-lint.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "vite",
+    "vanilla-js",
+    "sass",
+    "scss",
+    "starter",
+    "template",
+    "eslint",
+    "stylelint",
+    "htmlhint",
+    "prettier"
+  ],
+  "author": "Marco Pontili",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/marcop135/vite-vanilla-sass-lint/issues"
@@ -34,7 +45,6 @@
     "stylelint": "^16.19.1",
     "stylelint-config-standard-scss": "^15.0.0",
     "terser": "^5.39.1",
-    "typescript-eslint": "^8.32.1",
     "vite": "^6.3.5",
     "vite-plugin-eslint2": "^5.0.3",
     "vite-plugin-html": "^3.2.2",
