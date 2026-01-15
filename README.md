@@ -1,7 +1,7 @@
 # 🚀 Vite Vanilla JS + Sass — No-Fuss Starter
 
-A fast, modern starter template for vanilla JavaScript and Sass, powered by [Vite](https://vitejs.dev/).  
-Includes comprehensive linting, formatting, image optimization, HTML minification, and legacy browser support.  
+A fast, modern starter template for vanilla JavaScript and Sass, powered by [Vite](https://vitejs.dev/).
+Includes comprehensive linting, formatting, image optimization, HTML minification, and legacy browser support.
 Perfect for performant, framework-free frontend apps with strict code quality.
 
 ## ✨ Features
@@ -36,6 +36,16 @@ Perfect for performant, framework-free frontend apps with strict code quality.
 - `eslint.config.js`, `.stylelintrc`, `.htmlhintrc` – Lint configs
 - `prettier.config.mjs` – Formatting config
 - `package.json` – Scripts & dependencies
+- `.vscode/` – VSCode workspace settings and recommended extensions
+
+## 🌐 Browser Support
+
+This starter supports modern browsers and legacy browsers (excluding IE 11) via `@vitejs/plugin-legacy`:
+- **Modern browsers:** Latest versions of Chrome, Firefox, Safari, Edge
+- **Legacy browsers:** Older versions with automatic polyfills and transpilation
+- **Target:** `defaults, not IE 11` (configured in `vite.config.js`)
+
+The build process generates both modern and legacy bundles for optimal performance and compatibility.
 
 ## 🧩 Vite Plugins
 
@@ -77,10 +87,28 @@ npm run format    # Format html, css, scss, js, and md files
 
 Includes:
 
-- `eslint` – Lint JavaScript
-- `stylelint` – Lint CSS/SCSS
-- `htmlhint` – Lint HTML/JSX
-- `prettier` – Format code
+- `eslint` – Lint JavaScript (configured in `eslint.config.js`)
+- `stylelint` – Lint CSS/SCSS (configured in `.stylelintrc`)
+- `htmlhint` – Lint HTML/JSX (configured in `.htmlhintrc`)
+- `prettier` – Format code (configured in `prettier.config.mjs`)
+
+### Configuration Highlights
+
+**ESLint (`eslint.config.js`):**
+- Enforces strict equality (`===`)
+- Warns on camelCase violations
+- Errors on undefined variables and unused vars
+- Browser globals enabled
+
+**Stylelint (`.stylelintrc`):**
+- Extends `stylelint-config-standard-scss`
+- Validates SCSS syntax and best practices
+- Custom rules for project flexibility
+
+**HTMLHint (`.htmlhintrc`):**
+- Enforces lowercase tags and attributes
+- Requires double quotes for attributes
+- Validates unique IDs and required attributes
 
 ### 📌 Run automatically:
 
