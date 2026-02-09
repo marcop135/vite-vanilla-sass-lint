@@ -8,7 +8,10 @@ export default defineConfig([
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
-      globals: globals.browser,
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
     },
     rules: {
       semi: ['error', 'always'],
@@ -25,6 +28,23 @@ export default defineConfig([
       'prefer-template': 'warn',
       eqeqeq: ['error', 'always'],
       camelcase: ['warn', { properties: 'always' }],
+    },
+  },
+  {
+    files: ['**/*.test.{js,mjs,cjs,jsx,ts,tsx}', '**/*.spec.{js,mjs,cjs,jsx,ts,tsx}'],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        describe: 'readonly',
+        it: 'readonly',
+        expect: 'readonly',
+        beforeEach: 'readonly',
+        afterEach: 'readonly',
+        beforeAll: 'readonly',
+        afterAll: 'readonly',
+        vi: 'readonly',
+      },
     },
   },
 ]);
