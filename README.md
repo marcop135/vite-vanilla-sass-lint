@@ -13,6 +13,9 @@ Perfect for performant, framework-free frontend apps with strict code quality.
 - 🔧 Minified and templated HTML
 - 🕸️ Legacy browser compatibility
 - 🌀 Autoprefixing for cross-browser CSS
+- 🧪 Testing with Vitest
+- 🔒 Pre-commit hooks with Husky & lint-staged
+- 🚀 CI/CD pipeline with GitHub Actions
 
 ## 📦 Tech Stack
 
@@ -21,6 +24,9 @@ Perfect for performant, framework-free frontend apps with strict code quality.
 - **Styles:** Dart Sass, modern-normalize
 - **Linting:** ESLint, Stylelint, HTMLHint
 - **Formatting:** Prettier
+- **Testing:** Vitest
+- **Git Hooks:** Husky, lint-staged
+- **CI/CD:** GitHub Actions
 - **Images:** vite-plugin-imagemin
 - **HTML:** vite-plugin-html
 - **PostCSS:** Autoprefixer
@@ -59,8 +65,10 @@ The build process generates both modern and legacy bundles for optimal performan
 
 ## ⚙️ Requirements
 
-- [Node.js](https://nodejs.org/en) (v18+)
+- [Node.js](https://nodejs.org/en) (v22.14+)
 - [degit](https://github.com/Rich-Harris/degit) (`npm install -g degit`)
+
+> **Note:** The project uses `.nvmrc` to specify the Node.js version. If you use `nvm`, run `nvm use` to automatically switch to the correct version.
 
 ## 🚀 Getting Started
 
@@ -74,11 +82,19 @@ npm run dev
 ## 🧪 Scripts
 
 ```bash
-npm run dev       # Start dev server
-npm run build     # Build for production
-npm run preview   # Preview production build
-npm run lint      # Lint html, css, scss, and js files
-npm run format    # Format html, css, scss, js, and md files
+npm run dev          # Start dev server
+npm run build        # Build for production
+npm run preview      # Preview production build
+npm run lint         # Lint html, css, scss, and js files
+npm run lint:fix     # Lint and auto-fix issues
+npm run format       # Format html, css, scss, js, and md files
+npm run format:check # Check code formatting
+npm run test         # Run tests
+npm run test:ui      # Run tests with UI
+npm run test:coverage # Run tests with coverage
+npm run clean        # Remove dist folder
+npm run audit        # Check for security vulnerabilities
+npm run audit:fix    # Fix security vulnerabilities
 ```
 
 ---
@@ -128,6 +144,38 @@ npx prettier --check "src/**/*.{js,css,scss,html,md}"
 
 ---
 
+## 🧪 Testing
+
+This project uses [Vitest](https://vitest.dev/) for testing.
+
+### Running Tests
+
+```bash
+npm run test         # Run tests in watch mode
+npm run test:ui      # Run tests with UI
+npm run test:coverage # Run tests with coverage report
+```
+
+### Writing Tests
+
+- Test files should be named `*.test.js` or `*.spec.js`
+- Place test files next to the code they test or in a `__tests__` directory
+- Use Vitest's API: `describe`, `it`, `expect`, etc.
+
+Example test:
+
+```javascript
+import { describe, it, expect } from 'vitest';
+
+describe('My Feature', () => {
+  it('should do something', () => {
+    expect(true).toBe(true);
+  });
+});
+```
+
+---
+
 ## 📚 Official Documentation
 
 - [Vite Docs](https://vitejs.dev/guide/)
@@ -137,6 +185,8 @@ npx prettier --check "src/**/*.{js,css,scss,html,md}"
 - [HTMLHint](https://htmlhint.com/)
 - [Stylelint](https://stylelint.io/)
 - [ESLint](https://eslint.org/docs/latest/)
+- [Vitest](https://vitest.dev/)
+- [Husky](https://typicode.github.io/husky/)
 - Vite Plugins:
   - [`vite-plugin-html`](https://github.com/vbenjs/vite-plugin-html)
   - [`vite-plugin-imagemin`](https://github.com/vbenjs/vite-plugin-imagemin)
@@ -148,7 +198,11 @@ npx prettier --check "src/**/*.{js,css,scss,html,md}"
 
 ## 🤝 Contributing
 
-Contributions welcome! Open issues or submit PRs.
+Contributions welcome! Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines on how to contribute.
+
+- 🐛 Found a bug? [Open an issue](https://github.com/marcop135/vite-vanilla-sass-lint/issues)
+- 💡 Have a feature request? [Open an issue](https://github.com/marcop135/vite-vanilla-sass-lint/issues)
+- 📝 Want to contribute? [Read the contributing guide](./CONTRIBUTING.md)
 
 ## 👤 Author
 

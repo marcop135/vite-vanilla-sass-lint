@@ -27,9 +27,11 @@ export default defineConfig({
     },
     rollupOptions: {
       output: {
-        manualChunks: {
-          // Separate vendor chunks for better caching
-          vendor: [],
+        manualChunks: (id) => {
+          // Split vendor dependencies into separate chunk for better caching
+          if (id.includes('node_modules')) {
+            return 'vendor';
+          }
         },
         chunkFileNames: 'assets/js/[name]-[hash].js',
         entryFileNames: 'assets/js/[name]-[hash].js',
