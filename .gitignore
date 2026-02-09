@@ -1,5 +1,5 @@
 node_modules
-# dist
+dist
 .eslintcache
 .stylelintcache
 
@@ -15,5 +15,12 @@ Thumbs.db
 # Local environment files
 *.env
 *.local
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Husky
+.husky/_/
 
 
