@@ -23,7 +23,7 @@ describe('Main App', () => {
     const h1 = document.createElement('h1');
     h1.textContent = 'Vite + Sass, No Fuss';
     main.appendChild(h1);
-    
+
     expect(main.querySelector('h1')).toBeTruthy();
     expect(main.querySelector('h1').textContent).toBe('Vite + Sass, No Fuss');
   });
@@ -32,7 +32,7 @@ describe('Main App', () => {
     const footer = document.createElement('footer');
     const small = document.createElement('small');
     footer.appendChild(small);
-    
+
     expect(footer.querySelector('small')).toBeTruthy();
   });
 });
