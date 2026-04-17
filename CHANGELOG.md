@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.6.0] - 2026-04-17
+
+### Added
+
+- Added a tag-driven GitHub Actions release workflow that validates `lint`, `test`, `build`, and `audit` before publishing a GitHub release.
+- Added a `release:check` npm script to run the full release validation pipeline locally or in CI.
+
+### Changed
+
+- Upgraded the Vitest stack to v4 (`vitest`, `@vitest/ui`, `@vitest/coverage-v8`) and updated `jsdom` to match.
+- Removed `vite-plugin-imagemin` to eliminate legacy transitive vulnerabilities in the dependency tree.
+
 ## [1.5.3] - 2026-04-17
 
 ### Changed

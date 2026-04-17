@@ -1,6 +1,5 @@
 // vite.config.js
 import { defineConfig } from 'vite';
-import viteImagemin from 'vite-plugin-imagemin';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import legacy from '@vitejs/plugin-legacy';
 import stylelint from 'vite-plugin-stylelint';
@@ -57,37 +56,6 @@ export default defineConfig({
     // - Support custom template
     createHtmlPlugin({
       minify: true, // Minify HTML on build (Uses html-minifier-terser)
-    }),
-
-    // vite-plugin-imagemin
-    // Vite plugin for compressing image assets
-    // https://github.com/vbenjs/vite-plugin-imagemin
-    viteImagemin({
-      gifsicle: {
-        optimizationLevel: 7,
-        interlaced: false,
-      },
-      optipng: {
-        optimizationLevel: 7,
-      },
-      mozjpeg: {
-        quality: 80,
-      },
-      pngquant: {
-        quality: [0.8, 0.9],
-        speed: 4,
-      },
-      svgo: {
-        plugins: [
-          {
-            name: 'removeViewBox',
-          },
-          {
-            name: 'removeEmptyAttrs',
-            active: false,
-          },
-        ],
-      },
     }),
 
     // vite-plugin-eslint2
