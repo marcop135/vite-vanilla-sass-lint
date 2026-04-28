@@ -18,7 +18,8 @@ export default defineConfig([
       quotes: ['error', 'single'],
       'no-console': 'off',
       'no-unused-vars': 'error',
-      'no-debugger': 'off',
+      'no-debugger': 'error',
+      'no-eval': 'error',
       'no-undef': 'error',
       'no-empty': 'off',
       'no-mixed-spaces-and-tabs': 'off',
@@ -31,7 +32,10 @@ export default defineConfig([
     },
   },
   {
-    files: ['**/*.test.{js,mjs,cjs,jsx,ts,tsx}', '**/*.spec.{js,mjs,cjs,jsx,ts,tsx}'],
+    files: [
+      '**/*.test.{js,mjs,cjs,jsx,ts,tsx}',
+      '**/*.spec.{js,mjs,cjs,jsx,ts,tsx}',
+    ],
     languageOptions: {
       globals: {
         ...globals.browser,

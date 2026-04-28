@@ -47,6 +47,7 @@ Perfect for performant, framework-free frontend apps with strict code quality.
 ## 🌐 Browser Support
 
 This starter supports modern browsers and legacy browsers (excluding IE 11) via `@vitejs/plugin-legacy`:
+
 - **Modern browsers:** Latest versions of Chrome, Firefox, Safari, Edge
 - **Legacy browsers:** Older versions with automatic polyfills and transpilation
 - **Target:** `defaults, not IE 11` (configured in `vite.config.js`)
@@ -99,6 +100,14 @@ npm run audit:fix    # Fix security vulnerabilities
 
 ---
 
+## 🔐 Deployment Notes
+
+- `dist/` is build output only and must stay untracked in git.
+- Production builds use `sourcemap: 'hidden'` in `vite.config.js`: source maps are generated but not referenced in built JS.
+- If deploying from artifacts, avoid publishing `.map` files unless you explicitly want source-level debugging in production.
+
+---
+
 ## 🧹 Linting & Formatting
 
 Includes:
@@ -111,17 +120,20 @@ Includes:
 ### Configuration Highlights
 
 **ESLint (`eslint.config.js`):**
+
 - Enforces strict equality (`===`)
 - Warns on camelCase violations
 - Errors on undefined variables and unused vars
 - Browser globals enabled
 
 **Stylelint (`.stylelintrc`):**
+
 - Extends `stylelint-config-standard-scss`
 - Validates SCSS syntax and best practices
 - Custom rules for project flexibility
 
 **HTMLHint (`.htmlhintrc`):**
+
 - Enforces lowercase tags and attributes
 - Requires double quotes for attributes
 - Validates unique IDs and required attributes
