@@ -59,7 +59,7 @@
   "homepage": "https://github.com/marcop135/vite-vanilla-sass-lint#readme",
   "devDependencies": {
     "@vitejs/plugin-legacy": "^7.2.1",
-    "@vitest/coverage-v8": "^4.1.4",
+    "@vitest/coverage-v8": "^4.1.5",
     "@vitest/ui": "^4.1.4",
     "autoprefixer": "^10.4.24",
     "eslint": "^10.0.0",
