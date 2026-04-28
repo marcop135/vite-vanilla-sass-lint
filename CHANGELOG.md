@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.6.2] - 2026-04-28
+
+### Changed
+
+- Updated GitHub Actions dependencies:
+  - `actions/setup-node` from 4.4.0 to 6.4.0
+  - `actions/checkout` from 4.3.1 to 6.0.2
+  - `softprops/action-gh-release` from 2.6.2 to 3.0.0
+- Updated core and tooling dev dependencies:
+  - `@vitejs/plugin-legacy` from 7.2.1 to 8.0.1
+  - `vite` from 7.3.2 to 8.0.10
+  - `vitest` from 4.1.4 to 4.1.5
+  - `eslint` from 10.2.0 to 10.2.1
+  - `jsdom` from 29.0.2 to 29.1.0
+  - `postcss` from 8.5.10 to 8.5.12
+  - `stylelint` from 17.8.0 to 17.9.1
+  - `terser` from 5.46.1 to 5.46.2
+  - `lint-staged` from 15.5.2 to 16.4.0
+
 ## [1.6.0] - 2026-04-17
 
 ### Added
