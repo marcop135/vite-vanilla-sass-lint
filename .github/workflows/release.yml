@@ -51,9 +51,18 @@ jobs:
             echo "value=${GITHUB_REF_NAME}" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Checkout tag
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          ref: ${{ steps.tag.outputs.value }}
+
+      - name: Build release notes from CHANGELOG
+        run: node scripts/release-notes-from-changelog.mjs "${{ steps.tag.outputs.value }}" release-body.md
+
       - name: Publish GitHub release
         uses: softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda
         with:
           tag_name: ${{ steps.tag.outputs.value }}
           name: ${{ steps.tag.outputs.value }}
-          generate_release_notes: true
+          body_path: release-body.md
+          generate_release_notes: false

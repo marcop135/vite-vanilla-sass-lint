@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+- GitHub Releases are built from the matching `CHANGELOG.md` section for each tag (no auto-generated “What’s Changed” list with @mentions from commits or PRs).
+
 ## [1.7.2] - 2026-05-02
 
 ### Added
@@ -57,6 +63,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `stylelint` from 17.8.0 to 17.9.1
   - `terser` from 5.46.1 to 5.46.2
   - `lint-staged` from 15.5.2 to 16.4.0
+
+## [1.6.1] - 2026-04-28
+
+### Changed
+
+- CI and GitHub Actions release workflow hardening (#13).
+- Frontend security defaults and repository hygiene tightened (#14).
 
 ## [1.6.0] - 2026-04-17
 
@@ -115,6 +128,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated README with testing section
 - Added documentation for new scripts and features
 - Added note about `.nvmrc` usage in README
+
+## [1.5.1] - 2026-04-17
+
+### Changed
+
+- Patch maintenance on `master` (repository housekeeping).
 
 ## [1.4.0] - Previous Release
 
