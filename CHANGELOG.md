@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.1] - 2026-05-02
+
+### Added
+
+- Scheduled patch release workflow (`workflow_dispatch` and cron on the 3rd and 17th UTC): runs `release:check` on `develop`, bumps semver patch and changelog via `scripts/bump-patch-maintenance.mjs`, pushes `develop`, and pushes tag `v*` so the Release workflow publishes a GitHub Release.
+
 ## [1.7.0] - 2026-05-02
 
 ### Added
