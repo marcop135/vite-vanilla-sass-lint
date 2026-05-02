@@ -21,22 +21,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Reconciled `package.json` version with `CHANGELOG.md` after two release entries did not bump `package.json`.
 
-## [1.7.0] - 2026-05-02
-
-### Added
-
-- Dependabot auto-merge workflow that enables squash auto-merge for patch and minor updates after CI passes; major updates remain manual.
-- Scheduled biweekly `npm update` workflow that runs on the 1st and 15th of each month (plus `workflow_dispatch`), verifies via `release:check`, and opens a PR with the lockfile diff.
-
-### Changed
-
-- Dependabot npm and github-actions updates now target `develop` instead of `master`, treating `develop` as the integration branch where bumps soak before promoting to `master`.
-- CI now runs on `develop` push and pull_request in addition to `master` and `main`.
-
-### Fixed
-
-- Reconciled `package.json` version with `CHANGELOG.md` after two release entries did not bump `package.json`.
-
 ## [1.6.2] - 2026-04-28
 
 ### Changed
