@@ -1,0 +1,54 @@
+# Biweekly: bump patch + prepend CHANGELOG on develop, push develop, push tag v* (triggers Release workflow).
+# Cron 3rd & 17th UTC — after npm update PRs on 1st/15th have time to land on develop.
+#
+# Netlify: set production branch to develop for deploy-on-tag flow, or merge develop → master when you want.
+# No auto-merge to master → avoids branch-protection / half-updated state issues.
+# Repo Settings → Actions → General: workflows need read/write permission to push branches + tags.
+name: Scheduled patch release
+
+on:
+  schedule:
+    - cron: '0 9 3,17 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scheduled-patch-release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout develop
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e
+        with:
+          node-version: 22.x
+          cache: 'npm'
+
+      - name: Install and verify
+        run: npm ci && npm run release:check
+        env:
+          HUSKY: 0
+
+      - name: Bump patch version and changelog
+        id: bump
+        run: node scripts/bump-patch-maintenance.mjs
+
+      - name: Commit, push develop, push tag
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package.json CHANGELOG.md
+          git commit -m "chore(release): ${{ steps.bump.outputs.version }}"
+          git push origin HEAD:develop
+          git tag "v${{ steps.bump.outputs.version }}"
+          git push origin "refs/tags/v${{ steps.bump.outputs.version }}"
