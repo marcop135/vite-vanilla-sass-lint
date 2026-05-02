@@ -1,15 +1,15 @@
 {
   "name": "vite-vanilla-sass-lint",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "npx eslint \"src/assets/js/**/*.js\" && npx stylelint \"src/assets/**/*.{css,scss}\" && npx htmlhint \"**/*.html\"",
+    "lint": "npx eslint \"src/assets/js/**/*.js\" && npx stylelint \"src/assets/**/*.{css,scss}\" && npx htmlhint \"**/*.html\" && npx html-validate \"**/*.html\"",
     "lint:fix": "npx eslint \"src/assets/js/**/*.js\" --fix && npx stylelint \"src/assets/**/*.{css,scss}\" --fix",
-    "format": "prettier --write 'src/**/*.{js,css,scss,html,md}'",
-    "format:check": "prettier --check 'src/**/*.{js,css,scss,html,md}'",
+    "format": "prettier --write \"src/**/*.{js,css,scss,html,md}\" index.html",
+    "format:check": "prettier --check \"src/**/*.{js,css,scss,html,md}\" index.html",
     "clean": "rm -rf dist",
     "audit": "npm audit",
     "audit:fix": "npm audit fix",
@@ -17,7 +17,7 @@
     "test:ci": "vitest run",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage",
-    "release:check": "npm run lint && npm run test:ci && npm run build && npm audit --audit-level=moderate",
+    "release:check": "npm run lint && npm run format:check && npm run test:ci && npm run build && npm audit --audit-level=moderate",
     "prepare": "husky"
   },
   "lint-staged": {
@@ -33,7 +33,7 @@
       "prettier --write"
     ]
   },
-  "description": "Vite Vanilla JS + Sass starter with ESLint, Stylelint and HTMLHint linting, Vitest testing, pre-commit hooks, CI/CD, image optimization, modern-normalize.",
+  "description": "Vite Vanilla JS + Sass starter with ESLint, Stylelint, HTMLHint, and html-validate linting; Vitest; pre-commit hooks; CI/CD; modern-normalize.",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -49,6 +49,7 @@
     "eslint",
     "stylelint",
     "htmlhint",
+    "html-validate",
     "prettier"
   ],
   "author": "Marco Pontili",
@@ -64,6 +65,7 @@
     "autoprefixer": "^10.4.24",
     "eslint": "^10.3.0",
     "globals": "^17.6.0",
+    "html-validate": "^10.9.0",
     "htmlhint": "^1.8.1",
     "husky": "^9.1.7",
     "jsdom": "^29.1.1",

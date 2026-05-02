@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.2] - 2026-05-02
+
+### Added
+
+- `html-validate` dependency and lint step (`npm run lint` runs HTMLHint plus html-validate on `**/*.html`, respecting `.htmlvalidateignore` for `dist/` and `node_modules/`).
+- `.htmlvalidate.json` (Prettier-aligned doctype and void-element style) and VS Code recommendation for [`vscode-html-validate`](https://marketplace.visualstudio.com/items?itemName=html-validate.vscode-html-validate).
+
+### Changed
+
+- `format` / `format:check` / `release:check` Prettier globs include root `index.html`, matching CI and the Vite entry file.
+- Docs and `package.json` description updated for current HTML tooling (no stale imagemin claims).
+
 ## [1.7.1] - 2026-05-02
 
 ### Added

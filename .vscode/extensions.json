@@ -3,6 +3,7 @@
     "esbenp.prettier-vscode",
     "dbaeumer.vscode-eslint",
     "stylelint.vscode-stylelint",
-    "mkaufman.htmlhint"
+    "mkaufman.htmlhint",
+    "html-validate.vscode-html-validate"
   ]
 }

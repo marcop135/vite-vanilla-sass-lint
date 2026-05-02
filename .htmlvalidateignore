@@ -1,0 +1,3 @@
+# Dependencies and build output are not project-authored HTML
+dist/
+node_modules/
