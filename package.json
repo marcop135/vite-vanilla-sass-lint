@@ -63,7 +63,7 @@
     "@vitest/ui": "^4.1.4",
     "autoprefixer": "^10.4.24",
     "eslint": "^10.2.1",
-    "globals": "^17.3.0",
+    "globals": "^17.6.0",
     "htmlhint": "^1.8.1",
     "husky": "^9.1.7",
     "jsdom": "^29.1.0",
