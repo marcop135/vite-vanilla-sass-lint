@@ -56,7 +56,7 @@ jobs:
         with:
           ref: ${{ steps.tag.outputs.value }}
 
-      - name: Build release notes from CHANGELOG
+      - name: Build concise release notes
         run: node scripts/release-notes-from-changelog.mjs "${{ steps.tag.outputs.value }}" release-body.md
 
       - name: Publish GitHub release

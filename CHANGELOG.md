@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- GitHub Releases are built from the matching `CHANGELOG.md` section for each tag (no auto-generated “What’s Changed” list with @mentions from commits or PRs).
+- Tag releases publish short bullet summaries instead of automated commit listings.
 
 ## [1.7.2] - 2026-05-02
 
