@@ -1,5 +1,15 @@
-# Biweekly: bump patch + prepend CHANGELOG on develop, push develop, push tag v* (triggers Release workflow).
+# Biweekly: bump patch + prepend CHANGELOG via PR into develop, then tag the merge commit (triggers Release workflow).
 # Cron 3rd & 17th UTC — after npm update PRs on 1st/15th have time to land on develop.
+#
+# Branch protection on develop requires PRs + the lint-and-test (22.x) check, so this workflow:
+#   1. Pushes the bump to a release/v<version> branch
+#   2. Opens a PR into develop and enables auto-merge (squash)
+#   3. Polls until the PR is merged (CI must pass), then tags the new develop HEAD and pushes the tag
+#
+# Release chain: tags pushed by GITHUB_TOKEN do NOT trigger other workflows, so the tag-push step
+# uses secrets.RELEASE_PAT (a PAT with `contents: write` on this repo) to push the tag — that
+# triggers `release.yml` on `push: tags: ['v*']`. Without RELEASE_PAT the tag is still created but
+# you would need to dispatch the Release workflow manually.
 #
 # Netlify: set production branch to develop for deploy-on-tag flow, or merge develop → master when you want.
 # No auto-merge to master → avoids branch-protection / half-updated state issues.
@@ -13,6 +23,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 concurrency:
   group: scheduled-patch-release
@@ -43,12 +54,72 @@ jobs:
         id: bump
         run: node scripts/bump-patch-maintenance.mjs
 
-      - name: Commit, push develop, push tag
+      - name: Push release branch and open PR
+        id: pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ steps.bump.outputs.version }}
         run: |
+          set -euo pipefail
+          BRANCH="release/v${VERSION}"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "${BRANCH}"
           git add package.json CHANGELOG.md
-          git commit -m "chore(release): ${{ steps.bump.outputs.version }}"
-          git push origin HEAD:develop
-          git tag "v${{ steps.bump.outputs.version }}"
-          git push origin "refs/tags/v${{ steps.bump.outputs.version }}"
+          git commit -m "chore(release): ${VERSION}"
+          git push origin "${BRANCH}"
+          PR_URL="$(gh pr create \
+            --base develop \
+            --head "${BRANCH}" \
+            --title "chore(release): ${VERSION}" \
+            --body "Automated biweekly maintenance patch bump to v${VERSION}.")"
+          echo "branch=${BRANCH}" >> "$GITHUB_OUTPUT"
+          echo "url=${PR_URL}" >> "$GITHUB_OUTPUT"
+          gh pr merge --auto --squash --delete-branch "${PR_URL}"
+
+      - name: Wait for PR to merge
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{ steps.pr.outputs.url }}
+        timeout-minutes: 20
+        run: |
+          set -euo pipefail
+          while :; do
+            STATE="$(gh pr view "${PR_URL}" --json state --jq .state)"
+            case "${STATE}" in
+              MERGED)
+                echo "PR merged."
+                break
+                ;;
+              CLOSED)
+                echo "PR was closed without merging." >&2
+                exit 1
+                ;;
+              OPEN)
+                echo "PR still open, waiting..."
+                sleep 20
+                ;;
+              *)
+                echo "Unexpected PR state: ${STATE}" >&2
+                exit 1
+                ;;
+            esac
+          done
+
+      - name: Tag merged commit and push tag
+        env:
+          VERSION: ${{ steps.bump.outputs.version }}
+          RELEASE_PAT: ${{ secrets.RELEASE_PAT }}
+        run: |
+          set -euo pipefail
+          if [ -z "${RELEASE_PAT}" ]; then
+            echo "RELEASE_PAT secret is not set — required so the pushed tag triggers release.yml." >&2
+            exit 1
+          fi
+          git fetch origin develop --tags
+          git checkout develop
+          git reset --hard origin/develop
+          git tag "v${VERSION}"
+          git -c http.extraheader= \
+            -c "http.https://github.com/.extraheader=AUTHORIZATION: bearer ${RELEASE_PAT}" \
+            push origin "refs/tags/v${VERSION}"
