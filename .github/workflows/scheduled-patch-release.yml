@@ -6,10 +6,9 @@
 #   2. Opens a PR into develop and enables auto-merge (squash)
 #   3. Polls until the PR is merged (CI must pass), then tags the new develop HEAD and pushes the tag
 #
-# Release chain: tags pushed by GITHUB_TOKEN do NOT trigger other workflows, so the tag-push step
-# uses secrets.RELEASE_PAT (a PAT with `contents: write` on this repo) to push the tag — that
-# triggers `release.yml` on `push: tags: ['v*']`. Without RELEASE_PAT the tag is still created but
-# you would need to dispatch the Release workflow manually.
+# Release chain: tags pushed by GITHUB_TOKEN do NOT trigger other workflows, so we cannot rely on
+# `release.yml`'s `push: tags` trigger firing. Instead, after pushing the tag we invoke release.yml
+# directly via `workflow_call` from the `publish` job below — fully automatic, no PAT required.
 #
 # Netlify: set production branch to develop for deploy-on-tag flow, or merge develop → master when you want.
 # No auto-merge to master → avoids branch-protection / half-updated state issues.
@@ -32,6 +31,8 @@ concurrency:
 jobs:
   release:
     runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.tag.outputs.name }}
     steps:
       - name: Checkout develop
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
@@ -107,19 +108,22 @@ jobs:
           done
 
       - name: Tag merged commit and push tag
+        id: tag
         env:
           VERSION: ${{ steps.bump.outputs.version }}
-          RELEASE_PAT: ${{ secrets.RELEASE_PAT }}
         run: |
           set -euo pipefail
-          if [ -z "${RELEASE_PAT}" ]; then
-            echo "RELEASE_PAT secret is not set — required so the pushed tag triggers release.yml." >&2
-            exit 1
-          fi
           git fetch origin develop --tags
           git checkout develop
           git reset --hard origin/develop
           git tag "v${VERSION}"
-          git -c http.extraheader= \
-            -c "http.https://github.com/.extraheader=AUTHORIZATION: bearer ${RELEASE_PAT}" \
-            push origin "refs/tags/v${VERSION}"
+          git push origin "refs/tags/v${VERSION}"
+          echo "name=v${VERSION}" >> "$GITHUB_OUTPUT"
+
+  publish:
+    needs: release
+    uses: ./.github/workflows/release.yml
+    with:
+      tag: ${{ needs.release.outputs.tag }}
+    permissions:
+      contents: write
