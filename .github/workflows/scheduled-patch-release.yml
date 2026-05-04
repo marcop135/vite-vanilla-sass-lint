@@ -6,9 +6,12 @@
 #   2. Opens a PR into develop and enables auto-merge (squash)
 #   3. Polls until the PR is merged (CI must pass), then tags the new develop HEAD and pushes the tag
 #
-# Release chain: tags pushed by GITHUB_TOKEN do NOT trigger other workflows, so we cannot rely on
-# `release.yml`'s `push: tags` trigger firing. Instead, after pushing the tag we invoke release.yml
-# directly via `workflow_call` from the `publish` job below — fully automatic, no PAT required.
+# Why a PAT: events created by GITHUB_TOKEN do NOT trigger other workflows, so a PR opened with
+# the default token would never fire ci.yml — auto-merge would block forever on the missing
+# required check. We use secrets.RELEASE_PAT (fine-grained, this repo, contents+PRs read/write)
+# for checkout, branch push, PR create, and the tag push so CI fires and release.yml chains correctly.
+#
+# Release chain: release.yml is invoked directly via `workflow_call` from the `publish` job below.
 #
 # Netlify: set production branch to develop for deploy-on-tag flow, or merge develop → master when you want.
 # No auto-merge to master → avoids branch-protection / half-updated state issues.
@@ -39,6 +42,7 @@ jobs:
         with:
           ref: develop
           fetch-depth: 0
+          token: ${{ secrets.RELEASE_PAT }}
 
       - name: Setup Node.js
         uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e
@@ -51,36 +55,88 @@ jobs:
         env:
           HUSKY: 0
 
+      # Re-run safe: if develop's HEAD is already a `chore(release): X.Y.Z` commit and the
+      # tag v<X.Y.Z> is missing on origin, skip the bump and reuse that version. This recovers
+      # cleanly from a previous run that merged the PR but failed before pushing the tag.
+      - name: Detect pending release on develop
+        id: pending
+        run: |
+          set -euo pipefail
+          SUBJECT="$(git log -1 --pretty=%s)"
+          if [[ "${SUBJECT}" =~ ^chore\(release\):\ ([0-9]+\.[0-9]+\.[0-9]+)$ ]]; then
+            EXISTING="${BASH_REMATCH[1]}"
+            if git ls-remote --exit-code --tags origin "refs/tags/v${EXISTING}" >/dev/null 2>&1; then
+              echo "develop HEAD is release ${EXISTING} and tag exists — nothing pending."
+              echo "version=" >> "$GITHUB_OUTPUT"
+            else
+              echo "develop HEAD is release ${EXISTING} but tag is missing — will reuse."
+              echo "version=${EXISTING}" >> "$GITHUB_OUTPUT"
+            fi
+          else
+            echo "version=" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Bump patch version and changelog
         id: bump
+        if: steps.pending.outputs.version == ''
         run: node scripts/bump-patch-maintenance.mjs
+
+      - name: Resolve version
+        id: version
+        env:
+          PENDING: ${{ steps.pending.outputs.version }}
+          BUMPED: ${{ steps.bump.outputs.version }}
+        run: |
+          set -euo pipefail
+          if [ -n "${PENDING}" ]; then
+            echo "value=${PENDING}" >> "$GITHUB_OUTPUT"
+          else
+            echo "value=${BUMPED}" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Push release branch and open PR
         id: pr
+        if: steps.pending.outputs.version == ''
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VERSION: ${{ steps.bump.outputs.version }}
+          GH_TOKEN: ${{ secrets.RELEASE_PAT }}
+          VERSION: ${{ steps.version.outputs.value }}
         run: |
           set -euo pipefail
           BRANCH="release/v${VERSION}"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -b "${BRANCH}"
-          git add package.json CHANGELOG.md
-          git commit -m "chore(release): ${VERSION}"
-          git push origin "${BRANCH}"
-          PR_URL="$(gh pr create \
-            --base develop \
-            --head "${BRANCH}" \
-            --title "chore(release): ${VERSION}" \
-            --body "Automated biweekly maintenance patch bump to v${VERSION}.")"
+
+          # Re-run safe: if an existing release branch / PR / tag is already there from a prior
+          # attempt, reuse it instead of failing.
+          if git ls-remote --exit-code --heads origin "${BRANCH}" >/dev/null 2>&1; then
+            echo "Branch ${BRANCH} already exists on origin — reusing."
+          else
+            git checkout -b "${BRANCH}"
+            git add package.json CHANGELOG.md
+            git commit -m "chore(release): ${VERSION}"
+            git push origin "${BRANCH}"
+          fi
+
+          PR_URL="$(gh pr list --head "${BRANCH}" --base develop --state open --json url --jq '.[0].url // empty')"
+          if [ -z "${PR_URL}" ]; then
+            PR_URL="$(gh pr create \
+              --base develop \
+              --head "${BRANCH}" \
+              --title "chore(release): ${VERSION}" \
+              --body "Automated biweekly maintenance patch bump to v${VERSION}.")"
+          else
+            echo "Reusing existing PR ${PR_URL}"
+          fi
+
           echo "branch=${BRANCH}" >> "$GITHUB_OUTPUT"
           echo "url=${PR_URL}" >> "$GITHUB_OUTPUT"
-          gh pr merge --auto --squash --delete-branch "${PR_URL}"
+          gh pr merge --auto --squash --delete-branch "${PR_URL}" || \
+            echo "auto-merge already enabled or PR already merged — continuing"
 
       - name: Wait for PR to merge
+        if: steps.pending.outputs.version == ''
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.RELEASE_PAT }}
           PR_URL: ${{ steps.pr.outputs.url }}
         timeout-minutes: 20
         run: |
@@ -110,14 +166,21 @@ jobs:
       - name: Tag merged commit and push tag
         id: tag
         env:
-          VERSION: ${{ steps.bump.outputs.version }}
+          VERSION: ${{ steps.version.outputs.value }}
         run: |
           set -euo pipefail
           git fetch origin develop --tags
           git checkout develop
           git reset --hard origin/develop
-          git tag "v${VERSION}"
-          git push origin "refs/tags/v${VERSION}"
+
+          # Re-run safe: if v<VERSION> already exists on origin, do not retag — just emit the
+          # output so the publish job can still pick it up (or no-op if release already published).
+          if git ls-remote --exit-code --tags origin "refs/tags/v${VERSION}" >/dev/null 2>&1; then
+            echo "Tag v${VERSION} already exists on origin — skipping tag push."
+          else
+            git tag "v${VERSION}"
+            git push origin "refs/tags/v${VERSION}"
+          fi
           echo "name=v${VERSION}" >> "$GITHUB_OUTPUT"
 
   publish:
