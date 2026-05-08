@@ -6,7 +6,8 @@ Thank you for your interest in contributing! This document provides guidelines a
 
 1. **Fork the repository** and clone your fork locally
 2. **Install dependencies**: `npm install`
-3. **Create a branch** for your changes: `git checkout -b feature/your-feature-name`
+3. **Copy environment defaults** (optional): `cp .env.example .env`
+4. **Create a branch** off `develop` for your changes: `git checkout -b feature/your-feature-name develop`
 
 ## 📋 Development Workflow
 
@@ -44,6 +45,7 @@ Before submitting a PR, ensure:
 ### Pre-commit Hooks
 
 This project uses Husky and lint-staged to automatically:
+
 - Run ESLint and fix issues on staged JS files
 - Run Stylelint and fix issues on staged CSS/SCSS files
 - Format staged files with Prettier
@@ -84,6 +86,7 @@ These hooks run automatically when you commit. If they fail, fix the issues and 
 - Add more details in the body if needed
 
 Example:
+
 ```
 Add pre-commit hooks with Husky
 
@@ -102,7 +105,7 @@ Add pre-commit hooks with Husky
 ## 📦 Pull Request Process
 
 1. **Update your fork** with the latest changes from upstream
-2. **Create a feature branch** from `master`
+2. **Create a feature branch** from `develop` (the integration branch)
 3. **Make your changes** following the code style guidelines
 4. **Add tests** for new functionality
 5. **Update documentation** if needed
