@@ -12,6 +12,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tag releases publish short bullet summaries instead of automated commit listings.
 
 
+
+## [1.7.4] - 2026-05-08
+
+### Changed
+
+- Automated biweekly maintenance patch: semver patch bump after `release:check`, commit on `develop`, tag; GitHub Release follows the tag; Netlify deploy uses whichever branch you configured (often `develop`).
+
 ## [1.7.3] - 2026-05-03
 
 ### Changed
