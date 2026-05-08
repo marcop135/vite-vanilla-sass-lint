@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="./public/og.svg" alt="Vite + Sass, No Fuss — vite-vanilla-sass-lint starter" width="900" />
+</p>
+
 # 🚀 Vite Vanilla JS + Sass — No-Fuss Starter
 
 A fast, modern starter template for vanilla JavaScript and Sass, powered by [Vite](https://vitejs.dev/).
