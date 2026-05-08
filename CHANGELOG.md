@@ -2,7 +2,7 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; add **(WIP)** for incomplete work.
 
-## [Unreleased]
+## [1.8.1] - 2026-05-08
 
 - **Sec:** Override `fast-uri` to `^3.1.2` to clear GHSA-q3j6-qgpj-74h6 and GHSA-v39h-62p7-jpjc; `release:check` audit now passes.
 - **Docs:** Trim CHANGELOG entries to terse one-liners.
