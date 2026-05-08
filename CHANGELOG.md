@@ -2,6 +2,13 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; add **(WIP)** for incomplete work.
 
+## [Unreleased]
+
+- **Sec:** Override `fast-uri` to `^3.1.2` to clear GHSA-q3j6-qgpj-74h6 and GHSA-v39h-62p7-jpjc; `release:check` audit now passes.
+- **Docs:** Trim CHANGELOG entries to terse one-liners.
+- **Docs:** Realign `CONTRIBUTING.md` to branch from `develop` and reference `.env.example`.
+- **Docs:** Replace stale `IMPROVEMENTS.md` with current open items only.
+
 ## [1.8.0] - 2026-05-08
 
 - **Enhance:** Add Open Graph and Twitter Card meta tags.
