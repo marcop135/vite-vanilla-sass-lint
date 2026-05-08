@@ -23,4 +23,7 @@ coverage/
 # Husky
 .husky/_/
 
+# Netlify CLI local state
+.netlify/
+
 

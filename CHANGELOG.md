@@ -2,6 +2,12 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; add **(WIP)** for incomplete work.
 
+## [1.8.2] - 2026-05-08
+
+- **Build:** Bump html-validate 10.9.0 to 10.15.0, vite 8.0.10 to 8.0.11, terser 5.46.2 to 5.47.1, stylelint 17.9.1 to 17.11.0.
+- **Docs:** Drop emoji from README hero heading; align hero alt text and `index.html` title to comma style.
+- **Chore:** Gitignore `.netlify/` (Netlify CLI local state, machine-specific paths).
+
 ## [1.8.1] - 2026-05-08
 
 - **Sec:** Override `fast-uri` to `^3.1.2` to clear GHSA-q3j6-qgpj-74h6 and GHSA-v39h-62p7-jpjc; `release:check` audit now passes.
