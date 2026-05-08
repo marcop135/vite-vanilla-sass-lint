@@ -2,10 +2,6 @@
 
 Open items only. Items previously listed here that have since shipped (license fix, vendor splitting, Vitest, CI workflow, Husky, CONTRIBUTING/CHANGELOG, ESLint rules, audit scripts, `.env.example`) are recorded in `CHANGELOG.md`.
 
-## Security
-
-- **Transitive `fast-uri` advisories** (via `html-validate` and `stylelint`). `npm run release:check` fails at `npm audit --audit-level=moderate` until upstream releases land. Track and bump when fixed.
-
 ## Tooling
 
 - **Accessibility linting**: add `@axe-core/cli` or `eslint-plugin-jsx-a11y` (latter only useful if JSX is added).
