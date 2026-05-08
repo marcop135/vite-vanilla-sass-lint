@@ -27,6 +27,13 @@ function prependChangelogEntry(changelogBody, version, date) {
   while (i < lines.length && !/^## \[\d+\.\d+\.\d+\]/.test(lines[i])) {
     i += 1;
   }
+  // Drop any pre-existing blank lines immediately before the next version
+  // section so the inserted block always sits with exactly one blank line
+  // separating it from whatever came above (Unreleased section, intro, etc.).
+  while (i > 0 && lines[i - 1] === '') {
+    i -= 1;
+    lines.splice(i, 1);
+  }
   const block = [
     '',
     `## [${version}] - ${date}`,
