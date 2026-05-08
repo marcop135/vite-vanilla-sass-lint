@@ -183,6 +183,11 @@ jobs:
           fi
           echo "name=v${VERSION}" >> "$GITHUB_OUTPUT"
 
+      # Fast-forward main to develop. Refuses non-fast-forward pushes by default,
+      # so if main has diverged the workflow fails loudly instead of overwriting.
+      - name: Sync main with develop
+        run: git push origin develop:main
+
   publish:
     needs: release
     uses: ./.github/workflows/release.yml
