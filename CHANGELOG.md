@@ -2,6 +2,12 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; add **(WIP)** for incomplete work.
 
+## [1.9.0] - 2026-05-10
+
+- **Sec:** Drop `@vitejs/plugin-legacy`; eliminates `data:text/javascript` runtime scripts that required loosening `script-src` CSP. Build now emits modern ESM only.
+- **Build:** Remove legacy plugin import and config from `vite.config.js`; remove `@vitejs/plugin-legacy` from `devDependencies`.
+- **Docs:** README hero uses `public/og.png` (reliable GitHub rendering); drop legacy-browser claims and `@vitejs/plugin-legacy` references.
+
 ## [1.8.2] - 2026-05-08
 
 - **Build:** Bump html-validate 10.9.0 to 10.15.0, vite 8.0.10 to 8.0.11, terser 5.46.2 to 5.47.1, stylelint 17.9.1 to 17.11.0.

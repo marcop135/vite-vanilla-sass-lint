@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="./public/og.svg" alt="Vite Vanilla JS + Sass, No-Fuss Starter — vite-vanilla-sass-lint" width="900" />
+  <img src="./public/og.png" alt="Vite Vanilla JS + Sass, No-Fuss Starter, vite-vanilla-sass-lint" width="900" />
 </p>
 
 # Vite Vanilla JS + Sass, No-Fuss Starter
 
 A fast, modern starter template for vanilla JavaScript and Sass, powered by [Vite](https://vitejs.dev/).
-Includes comprehensive linting, formatting, HTML minification, legacy browser bundles, and a production-ready Vite build pipeline.
+Includes comprehensive linting, formatting, HTML minification, and a production-ready Vite build pipeline.
 Perfect for performant, framework-free frontend apps with strict code quality.
 
 ## ✨ Features
@@ -15,7 +15,6 @@ Perfect for performant, framework-free frontend apps with strict code quality.
 - 🧹 Integrated linting for HTML, CSS/SCSS, and JS
 - 📦 Production static assets hashed and emitted by Vite
 - 🔧 Minified and templated HTML
-- 🕸️ Legacy browser compatibility
 - 🌀 Autoprefixing for cross-browser CSS
 - 🧪 Testing with Vitest
 - 🔒 Pre-commit hooks with Husky & lint-staged
@@ -34,7 +33,6 @@ Perfect for performant, framework-free frontend apps with strict code quality.
 - **Assets:** Vite static pipeline (referenced files get hashed filenames in `dist/`)
 - **HTML:** vite-plugin-html
 - **PostCSS:** Autoprefixer
-- **Legacy:** @vitejs/plugin-legacy
 
 ## 🧪 Project Structure
 
@@ -51,20 +49,15 @@ Perfect for performant, framework-free frontend apps with strict code quality.
 
 ## 🌐 Browser Support
 
-This starter supports modern browsers and legacy browsers (excluding IE 11) via `@vitejs/plugin-legacy`:
+This starter targets modern evergreen browsers via Vite's default ESM build:
 
 - **Modern browsers:** Latest versions of Chrome, Firefox, Safari, Edge
-- **Legacy browsers:** Older versions with automatic polyfills and transpilation
-- **Target:** `defaults, not IE 11` (configured in `vite.config.js`)
-
-The build process generates both modern and legacy bundles for optimal performance and compatibility.
 
 ## 🧩 Vite Plugins
 
 - [`vite-plugin-html`](https://github.com/vbenjs/vite-plugin-html) – Minifies HTML + template support
 - [`vite-plugin-eslint2`](https://vite-plugin-eslint2.modyqyw.top/) – Lints JS
 - [`vite-plugin-stylelint`](https://vite-plugin-stylelint.modyqyw.top/) – Lints SCSS
-- [`@vitejs/plugin-legacy`](https://vitejs.dev/plugins/#vitejs/plugin-legacy) – Legacy browser support
 
 ---
 
@@ -210,7 +203,6 @@ describe('My Feature', () => {
   - [`vite-plugin-html`](https://github.com/vbenjs/vite-plugin-html)
   - [`vite-plugin-eslint2`](https://vite-plugin-eslint2.modyqyw.top/)
   - [`vite-plugin-stylelint`](https://vite-plugin-stylelint.modyqyw.top/)
-  - [`@vitejs/plugin-legacy`](https://vitejs.dev/plugins/#vitejs/plugin-legacy)
 
 ---
 

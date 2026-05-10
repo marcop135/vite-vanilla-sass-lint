@@ -1,6 +1,6 @@
 {
   "name": "vite-vanilla-sass-lint",
-  "version": "1.8.2",
+  "version": "1.9.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -59,7 +59,6 @@
   },
   "homepage": "https://github.com/marcop135/vite-vanilla-sass-lint#readme",
   "devDependencies": {
-    "@vitejs/plugin-legacy": "^8.0.1",
     "@vitest/coverage-v8": "^4.1.4",
     "@vitest/ui": "^4.1.4",
     "autoprefixer": "^10.4.24",

@@ -1,7 +1,6 @@
 // vite.config.js
 import { defineConfig } from 'vite';
 import { createHtmlPlugin } from 'vite-plugin-html';
-import legacy from '@vitejs/plugin-legacy';
 import stylelint from 'vite-plugin-stylelint';
 import eslint from 'vite-plugin-eslint2';
 
@@ -69,12 +68,5 @@ export default defineConfig({
     // https://github.com/ModyQyW/vite-plugin-stylelint
     // Docs: https://vite-plugin-stylelint.modyqyw.top/guide/getting-started.html
     [stylelint()],
-
-    // vite-plugin-legacy
-    // Vite plugin for generating legacy builds
-    // https://github.com/vitejs/vite/tree/main/packages/plugin-legacy
-    legacy({
-      targets: ['defaults', 'not IE 11'],
-    }),
   ],
 });
