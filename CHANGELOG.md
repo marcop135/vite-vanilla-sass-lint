@@ -2,6 +2,14 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; add **(WIP)** for incomplete work.
 
+## [1.9.1] - 2026-05-12
+
+- **Docs:** Rewrite README to lead with quick start; drop duplicated tech stack, manual lint block, and config restatements; consolidate scripts and config pointers into tables.
+- **Docs:** Move README hero asset to `docs/hero.png` so consumers can delete the OG card without breaking the README.
+- **Sec:** Tighten `index.html` CSP `script-src` to `'self'` now that `@vitejs/plugin-legacy` is gone and no inline scripts are emitted.
+- **Build:** `vite.config.js` switches to function form: `sourcemap` is `'hidden'` in production, `true` otherwise; add `rollup-plugin-visualizer` wired to `npm run analyze` (`vite build --mode analyze`).
+- **Docs:** Trim `CONTRIBUTING.md` scripts block to a single link back to README.
+
 ## [1.9.0] - 2026-05-10
 
 - **Sec:** Drop `@vitejs/plugin-legacy`; eliminates `data:text/javascript` runtime scripts that required loosening `script-src` CSP. Build now emits modern ESM only.

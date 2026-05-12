@@ -1,74 +1,14 @@
 <p align="center">
-  <img src="./public/og.png" alt="Vite Vanilla JS + Sass, No-Fuss Starter, vite-vanilla-sass-lint" width="900" />
+  <img src="./docs/hero.png" alt="vite-vanilla-sass-lint hero" width="900" />
 </p>
 
-# Vite Vanilla JS + Sass, No-Fuss Starter
+# Vite Vanilla JS + Sass Starter
 
-A fast, modern starter template for vanilla JavaScript and Sass, powered by [Vite](https://vitejs.dev/).
-Includes comprehensive linting, formatting, HTML minification, and a production-ready Vite build pipeline.
-Perfect for performant, framework-free frontend apps with strict code quality.
+A [Vite](https://vitejs.dev/) starter for vanilla JavaScript and Sass with linting, formatting, tests, and a tagged-release pipeline already wired up.
 
-## ✨ Features
+Use this when you want a small, framework-free static site or web app and you do not want to spend half a day configuring ESLint, Stylelint, HTMLHint, html-validate, Prettier, Vitest, Husky, and a release workflow yourself.
 
-- ⚡️ Lightning-fast development with Vite
-- 🧱 Pure Vanilla JS & Sass (no frameworks)
-- 🧹 Integrated linting for HTML, CSS/SCSS, and JS
-- 📦 Production static assets hashed and emitted by Vite
-- 🔧 Minified and templated HTML
-- 🌀 Autoprefixing for cross-browser CSS
-- 🧪 Testing with Vitest
-- 🔒 Pre-commit hooks with Husky & lint-staged
-- 🚀 CI/CD pipeline with GitHub Actions
-
-## 📦 Tech Stack
-
-- **Build:** Vite
-- **Language:** Vanilla JavaScript
-- **Styles:** Dart Sass, modern-normalize
-- **Linting:** ESLint, Stylelint, HTMLHint, [html-validate](https://html-validate.org/)
-- **Formatting:** Prettier
-- **Testing:** Vitest
-- **Git Hooks:** Husky, lint-staged
-- **CI/CD:** GitHub Actions
-- **Assets:** Vite static pipeline (referenced files get hashed filenames in `dist/`)
-- **HTML:** vite-plugin-html
-- **PostCSS:** Autoprefixer
-
-## 🧪 Project Structure
-
-- `src/` – Source files (HTML, JS, SCSS, assets)
-- `dist/` – Production build output
-- `index.html` – Entry HTML file
-- `vite.config.js` – Vite config
-- `postcss.config.js` – PostCSS config
-- `eslint.config.js`, `.stylelintrc`, `.htmlhintrc` – Lint configs (CLI)
-- `.htmlvalidate.json`, `.htmlvalidateignore` – [html-validate](https://html-validate.org/) config for editors and `npm run lint` (aligned with Prettier; ignores `dist/` / `node_modules`)
-- `prettier.config.mjs` – Formatting config
-- `package.json` – Scripts & dependencies
-- `.vscode/` – VSCode workspace settings and recommended extensions
-
-## 🌐 Browser Support
-
-This starter targets modern evergreen browsers via Vite's default ESM build:
-
-- **Modern browsers:** Latest versions of Chrome, Firefox, Safari, Edge
-
-## 🧩 Vite Plugins
-
-- [`vite-plugin-html`](https://github.com/vbenjs/vite-plugin-html) – Minifies HTML + template support
-- [`vite-plugin-eslint2`](https://vite-plugin-eslint2.modyqyw.top/) – Lints JS
-- [`vite-plugin-stylelint`](https://vite-plugin-stylelint.modyqyw.top/) – Lints SCSS
-
----
-
-## ⚙️ Requirements
-
-- [Node.js](https://nodejs.org/en) (v22.14+)
-- [degit](https://github.com/Rich-Harris/degit) (`npm install -g degit`)
-
-> **Note:** The project uses `.nvmrc` to specify the Node.js version. If you use `nvm`, run `nvm use` to automatically switch to the correct version.
-
-## 🚀 Getting Started
+## Quick start
 
 ```bash
 npx degit marcop135/vite-vanilla-sass-lint my-app
@@ -77,147 +17,87 @@ npm install
 npm run dev
 ```
 
-## 🧪 Scripts
+Dev server runs on `http://localhost:3000`.
 
-```bash
-npm run dev          # Start dev server
-npm run build        # Build for production
-npm run preview      # Preview production build
-npm run lint         # Lint html, css, scss, and js files
-npm run lint:fix     # Lint and auto-fix issues
-npm run format       # Format src + root index.html (js, css, scss, html, md)
-npm run format:check # Check code formatting
-npm run test         # Run tests
-npm run test:ui      # Run tests with UI
-npm run test:coverage # Run tests with coverage
-npm run clean        # Remove dist folder
-npm run audit          # Check for security vulnerabilities
-npm run audit:fix      # Fix security vulnerabilities
-npm run release:check  # Same gates as CI: lint, format, test, build, audit
+## What's included
+
+- **Build:** Vite, Dart Sass (`sass-embedded`), Autoprefixer, [modern-normalize](https://github.com/sindresorhus/modern-normalize)
+- **Quality:** [ESLint](https://eslint.org/), [Stylelint](https://stylelint.io/) + `stylelint-config-standard-scss`, [HTMLHint](https://htmlhint.com/), [html-validate](https://html-validate.org/), [Prettier](https://prettier.io/)
+- **Tests:** [Vitest](https://vitest.dev/) with UI + coverage modes, `jsdom` environment
+- **Vite plugins:** [`vite-plugin-html`](https://github.com/vbenjs/vite-plugin-html) (minify), [`vite-plugin-eslint2`](https://vite-plugin-eslint2.modyqyw.top/), [`vite-plugin-stylelint`](https://vite-plugin-stylelint.modyqyw.top/), [`rollup-plugin-visualizer`](https://github.com/btd/rollup-plugin-visualizer) (analyze)
+- **Automation:** Husky + lint-staged pre-commit, GitHub Actions for CI, tag-driven releases, biweekly patch releases, Dependabot auto-merge for patch/minor
+
+## Scripts
+
+| Command                 | What it does                                                  |
+| ----------------------- | ------------------------------------------------------------- |
+| `npm run dev`           | Start Vite dev server                                         |
+| `npm run build`         | Production build to `dist/`                                   |
+| `npm run preview`       | Serve the production build locally                            |
+| `npm run lint`          | ESLint + Stylelint + HTMLHint + html-validate                 |
+| `npm run lint:fix`      | Same, auto-fixing what's fixable                              |
+| `npm run format`        | Prettier write across `src/**` and root `index.html`          |
+| `npm run format:check`  | Prettier check (no writes)                                    |
+| `npm run test`          | Vitest watch                                                  |
+| `npm run test:ci`       | Vitest single run                                             |
+| `npm run test:ui`       | Vitest UI                                                     |
+| `npm run test:coverage` | Vitest coverage report                                        |
+| `npm run analyze`       | Build with bundle visualizer, opens `dist/stats.html`         |
+| `npm run audit`         | `npm audit`                                                   |
+| `npm run audit:fix`     | `npm audit fix`                                               |
+| `npm run release:check` | Same gates as CI: lint, format, test, build, audit (moderate) |
+| `npm run clean`         | Remove `dist/`                                                |
+
+## Project layout
+
+```
+src/
+  assets/
+    images/   svg + raster assets imported from JS
+    js/       entry: main.js, plus *.test.js
+    scss/     entry: main.scss
+public/         copied as-is to dist/ (favicons, OG image, site.webmanifest)
+docs/           README assets (hero.png)
+scripts/        release helpers (bump-patch-maintenance, release-notes-from-changelog)
+index.html      Vite entry, references src/assets/js/main.js
+vite.config.js  build config + bundle analyzer toggle
 ```
 
----
+## Configuration
 
-## 🔐 Deployment Notes
+| File                                         | Purpose                                             |
+| -------------------------------------------- | --------------------------------------------------- |
+| `eslint.config.js`                           | ESLint flat config                                  |
+| `.stylelintrc` + `.stylelintignore`          | Stylelint                                           |
+| `.htmlhintrc`                                | HTMLHint                                            |
+| `.htmlvalidate.json` + `.htmlvalidateignore` | html-validate (editor + CLI), aligned with Prettier |
+| `prettier.config.mjs`                        | Prettier                                            |
+| `postcss.config.js`                          | PostCSS (Autoprefixer)                              |
+| `vitest.config.js`                           | Vitest                                              |
+| `.browserslistrc`                            | Targets for Autoprefixer                            |
+| `.editorconfig` + `.nvmrc`                   | Editor + Node version pinning                       |
 
-- `dist/` is build output only and must stay untracked in git.
-- Production builds use `sourcemap: 'hidden'` in `vite.config.js`: source maps are generated but not referenced in built JS.
-- If deploying from artifacts, avoid publishing `.map` files unless you explicitly want source-level debugging in production.
+Production build emits ESM only and uses `sourcemap: 'hidden'`: maps are produced for crash-reporting tooling but never referenced from the built JS. `vite build --mode development` (or `--mode analyze`) emits full inline sourcemaps for local debugging. `dist/` is build output, untracked, and not published.
 
----
+## Releases
 
-## 🧹 Linting & Formatting
+Changes land on `develop`, then a release commit (`chore(release): X.Y.Z`) merges to `develop`, the merge is tagged `vX.Y.Z`, and `main` is fast-forwarded. The `release.yml` workflow then runs `release:check` against the tag and publishes a GitHub Release whose body is built from `CHANGELOG.md` by `scripts/release-notes-from-changelog.mjs`.
 
-Includes:
+A scheduled workflow (`scheduled-patch-release.yml`) runs the bump, PR, merge, tag, and `main` fast-forward biweekly on the 3rd and 17th UTC. See [`CHANGELOG.md`](./CHANGELOG.md) for the full history.
 
-- `eslint` – Lint JavaScript (configured in `eslint.config.js`)
-- `stylelint` – Lint CSS/SCSS (configured in `.stylelintrc`)
-- `htmlhint` – Lint HTML (configured in `.htmlhintrc`)
-- `html-validate` – Additional HTML validation in `npm run lint` (configured in `.htmlvalidate.json`)
-- `prettier` – Format code (configured in `prettier.config.mjs`)
+## Requirements
 
-### Configuration Highlights
+- [Node.js](https://nodejs.org/en) v22.14+ (pinned in `.nvmrc`, run `nvm use`)
+- [degit](https://github.com/Rich-Harris/degit) (`npm install -g degit`), only to scaffold
 
-**ESLint (`eslint.config.js`):**
+## Contributing
 
-- Enforces strict equality (`===`)
-- Warns on camelCase violations
-- Errors on undefined variables and unused vars
-- Browser globals enabled
+See [CONTRIBUTING.md](./CONTRIBUTING.md). Bug reports and feature requests go through [issues](https://github.com/marcop135/vite-vanilla-sass-lint/issues).
 
-**Stylelint (`.stylelintrc`):**
-
-- Extends `stylelint-config-standard-scss`
-- Validates SCSS syntax and best practices
-- Custom rules for project flexibility
-
-**HTMLHint (`.htmlhintrc`):**
-
-- Enforces lowercase tags and attributes
-- Requires double quotes for attributes
-- Validates unique IDs and required attributes
-
-### 📌 Run automatically:
-
-```bash
-npm run lint
-npm run format
-```
-
-### 📌 Run manually:
-
-```bash
-npx eslint "src/assets/js/**/*.js"
-npx stylelint "src/assets/**/*.{css,scss}"
-npx htmlhint "**/*.html"
-npx prettier --check "src/**/*.{js,css,scss,html,md}" index.html
-```
-
----
-
-## 🧪 Testing
-
-This project uses [Vitest](https://vitest.dev/) for testing.
-
-### Running Tests
-
-```bash
-npm run test         # Run tests in watch mode
-npm run test:ui      # Run tests with UI
-npm run test:coverage # Run tests with coverage report
-```
-
-### Writing Tests
-
-- Test files should be named `*.test.js` or `*.spec.js`
-- Place test files next to the code they test or in a `__tests__` directory
-- Use Vitest's API: `describe`, `it`, `expect`, etc.
-
-Example test:
-
-```javascript
-import { describe, it, expect } from 'vitest';
-
-describe('My Feature', () => {
-  it('should do something', () => {
-    expect(true).toBe(true);
-  });
-});
-```
-
----
-
-## 📚 Official Documentation
-
-- [Vite Docs](https://vitejs.dev/guide/)
-- [Sass Docs](https://sass-lang.com/)
-- [Modern Normalize](https://github.com/sindresorhus/modern-normalize)
-- [Autoprefixer](https://github.com/postcss/autoprefixer)
-- [HTMLHint](https://htmlhint.com/)
-- [html-validate](https://html-validate.org/)
-- [Stylelint](https://stylelint.io/)
-- [ESLint](https://eslint.org/docs/latest/)
-- [Vitest](https://vitest.dev/)
-- [Husky](https://typicode.github.io/husky/)
-- Vite Plugins:
-  - [`vite-plugin-html`](https://github.com/vbenjs/vite-plugin-html)
-  - [`vite-plugin-eslint2`](https://vite-plugin-eslint2.modyqyw.top/)
-  - [`vite-plugin-stylelint`](https://vite-plugin-stylelint.modyqyw.top/)
-
----
-
-## 🤝 Contributing
-
-Contributions welcome! Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines on how to contribute.
-
-- 🐛 Found a bug? [Open an issue](https://github.com/marcop135/vite-vanilla-sass-lint/issues)
-- 💡 Have a feature request? [Open an issue](https://github.com/marcop135/vite-vanilla-sass-lint/issues)
-- 📝 Want to contribute? [Read the contributing guide](./CONTRIBUTING.md)
-
-## 👤 Author
+## Author
 
 [Marco Pontili](https://marcopontili.com)
 
-## 📝 License
+## License
 
-Licensed under the [MIT](./LICENSE) License.
+[MIT](./LICENSE)

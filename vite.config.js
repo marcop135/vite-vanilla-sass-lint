@@ -3,8 +3,9 @@ import { defineConfig } from 'vite';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import stylelint from 'vite-plugin-stylelint';
 import eslint from 'vite-plugin-eslint2';
+import { visualizer } from 'rollup-plugin-visualizer';
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   root: './',
 
   server: {
@@ -16,17 +17,18 @@ export default defineConfig({
   },
 
   build: {
-    minify: 'terser', // Ensure Terser is used for production build
-    sourcemap: 'hidden', // Generate source maps but don't reference them in production
+    minify: 'terser',
+    // Full sourcemaps for non-production builds (`vite build --mode development`),
+    // hidden sourcemaps in production so prod JS does not advertise a sibling .map.
+    sourcemap: mode === 'production' ? 'hidden' : true,
     terserOptions: {
       compress: {
-        drop_console: true, // Remove all console logs
+        drop_console: true,
       },
     },
     rollupOptions: {
       output: {
         manualChunks: (id) => {
-          // Split vendor dependencies into separate chunk for better caching
           if (id.includes('node_modules')) {
             return 'vendor';
           }
@@ -43,30 +45,19 @@ export default defineConfig({
     },
   },
   plugins: [
-    // vite-plugin-html
-    // Vite plugin for processing html
-    // https://github.com/vbenjs/vite-plugin-html
-    //
-    // Features:
-    // - HTML compression capability
-    // - EJS template capability
-    // - Multi-page application support
-    // - Support custom entry
-    // - Support custom template
     createHtmlPlugin({
-      minify: true, // Minify HTML on build (Uses html-minifier-terser)
+      minify: true,
     }),
-
-    // vite-plugin-eslint2
-    // Vite plugin for linting JavaScript and TypeScript files
-    // https://github.com/ModyQyW/vite-plugin-eslint2
-    // Docs: https://vite-plugin-eslint2.modyqyw.top/
-    [eslint()],
-
-    // vite-plugin-stylelint
-    // Vite plugin for linting styles with Stylelint
-    // https://github.com/ModyQyW/vite-plugin-stylelint
-    // Docs: https://vite-plugin-stylelint.modyqyw.top/guide/getting-started.html
-    [stylelint()],
-  ],
-});
+    eslint(),
+    stylelint(),
+    // Bundle analyzer: enabled when `npm run analyze` (vite build --mode analyze).
+    // Writes dist/stats.html and opens it.
+    mode === 'analyze' &&
+      visualizer({
+        open: true,
+        filename: 'dist/stats.html',
+        gzipSize: true,
+        brotliSize: true,
+      }),
+  ].filter(Boolean),
+}));

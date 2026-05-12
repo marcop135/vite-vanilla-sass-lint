@@ -18,20 +18,7 @@ Thank you for your interest in contributing! This document provides guidelines a
 
 ### Available Scripts
 
-```bash
-npm run dev          # Start development server
-npm run build        # Build for production
-npm run preview      # Preview production build
-npm run lint         # Lint all files (JS, CSS, SCSS, HTML)
-npm run lint:fix     # Lint and auto-fix issues
-npm run format       # Format code with Prettier
-npm run format:check # Check code formatting
-npm run test         # Run tests
-npm run test:ui      # Run tests with UI
-npm run test:coverage # Run tests with coverage
-npm run clean        # Remove dist folder
-npm run audit        # Check for security vulnerabilities
-```
+See the [Scripts table in README.md](./README.md#scripts).
 
 ### Code Quality
 
