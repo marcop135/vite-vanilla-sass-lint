@@ -11,7 +11,13 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 
 const MAX_BULLETS = 6;
 
-/** Raw section lines between ## [version] and next ## [ */
+/**
+ * Slice the lines between the `## [version]` heading and the next `## [` heading.
+ *
+ * @param {string} changelog - Full CHANGELOG.md contents.
+ * @param {string} version - Version without the leading `v` (e.g. `1.9.1`).
+ * @returns {string[] | null} Section lines, or null if the section is missing or empty.
+ */
 function extractSectionLines(changelog, version) {
   const lines = changelog.split(/\r?\n/);
   const header = `## [${version}]`;
@@ -25,7 +31,15 @@ function extractSectionLines(changelog, version) {
   return body.join('\n').trim().length > 0 ? body : null;
 }
 
-/** Omit ### headings; merge continued sub-bullets into one `-` item per top-level bullet. */
+/**
+ * Flatten a changelog section into a single list of bullets.
+ *
+ * `### Subheadings` are dropped; sub-bullets fold into the parent with a `·`
+ * separator (or a single space when the parent ends with `:`).
+ *
+ * @param {string[]} sectionLines - Lines from {@link extractSectionLines}.
+ * @returns {string[]} One string per top-level bullet, without the leading `- `.
+ */
 function sectionToBullets(sectionLines) {
   const bullets = [];
   /** @type {string | null} */

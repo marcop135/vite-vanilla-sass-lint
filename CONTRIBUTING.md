@@ -1,138 +1,38 @@
-# Contributing to Vite Vanilla JS + Sass Starter
+# Contributing
 
-Thank you for your interest in contributing! This document provides guidelines and instructions for contributing to this project.
+## Getting started
 
-## 🚀 Getting Started
+1. Fork and clone the repo.
+2. `npm install`.
+3. Branch from `develop`: `git checkout -b feature/your-feature develop`.
 
-1. **Fork the repository** and clone your fork locally
-2. **Install dependencies**: `npm install`
-3. **Copy environment defaults** (optional): `cp .env.example .env`
-4. **Create a branch** off `develop` for your changes: `git checkout -b feature/your-feature-name develop`
+See [README.md](./README.md#quick-start) for the Quick start path.
 
-## 📋 Development Workflow
+## Prerequisites
 
-### Prerequisites
+- Node.js v22.14+ (pinned in `.nvmrc`; `nvm use`).
+- npm (bundled with Node).
 
-- Node.js v22.14+ (check `.nvmrc` for the exact version)
-- npm (comes with Node.js)
+## Workflow
 
-### Available Scripts
+Before opening a PR, run `npm run release:check`. It runs the same gates as CI: lint, format check, test, build, and `npm audit` at the moderate threshold.
 
-See the [Scripts table in README.md](./README.md#scripts).
+Pre-commit hooks (Husky + lint-staged) run ESLint, Stylelint, and Prettier on staged files. If they fail, fix the reported issues and commit again.
 
-### Code Quality
+## Code style
 
-Before submitting a PR, ensure:
+- **JavaScript:** ES2020+. Strict equality (`===`). Single quotes. camelCase. JSDoc on non-trivial functions. Rules live in `eslint.config.js`.
+- **SCSS:** use variables, mixins, and shallow nesting. Rules live in `.stylelintrc`.
+- **HTML:** semantic elements, lowercase tags and attributes, double-quoted attribute values, alt text on images. Rules live in `.htmlhintrc` and `.htmlvalidate.json`.
 
-- ✅ All tests pass: `npm run test`
-- ✅ Linting passes: `npm run lint`
-- ✅ Formatting is correct: `npm run format:check`
-- ✅ Build succeeds: `npm run build`
+## Commit messages
 
-### Pre-commit Hooks
+Imperative mood, first line under 72 characters, optional body for the why. Example: `fix(build): keep sourcemaps referenced in dev`.
 
-This project uses Husky and lint-staged to automatically:
+## Pull requests
 
-- Run ESLint and fix issues on staged JS files
-- Run Stylelint and fix issues on staged CSS/SCSS files
-- Format staged files with Prettier
+Branch from `develop`. The repository has a PR template with the checklist. Issues use the bug and feature templates under `.github/ISSUE_TEMPLATE/`.
 
-These hooks run automatically when you commit. If they fail, fix the issues and commit again.
+## License
 
-## 📝 Code Style Guidelines
-
-### JavaScript
-
-- Use ES6+ features
-- Follow ESLint rules (configured in `eslint.config.js`)
-- Use single quotes for strings
-- Always use strict equality (`===`)
-- Use camelCase for variables and functions
-- Add JSDoc comments for complex functions
-
-### CSS/SCSS
-
-- Follow Stylelint rules (configured in `.stylelintrc`)
-- Use SCSS features (variables, mixins, nesting)
-- Keep selectors specific but not overly nested
-- Use meaningful class names
-
-### HTML
-
-- Follow HTMLHint rules (configured in `.htmlhintrc`)
-- Use semantic HTML5 elements
-- Always include alt text for images
-- Use lowercase for tags and attributes
-- Use double quotes for attributes
-
-### Git Commit Messages
-
-- Use clear, descriptive commit messages
-- Start with a verb in imperative mood (e.g., "Add", "Fix", "Update")
-- Keep the first line under 72 characters
-- Add more details in the body if needed
-
-Example:
-
-```
-Add pre-commit hooks with Husky
-
-- Install husky and lint-staged
-- Configure pre-commit hook
-- Add lint-staged configuration to package.json
-```
-
-## 🧪 Testing
-
-- Write tests for new features
-- Ensure all tests pass before submitting
-- Aim for good test coverage
-- Use descriptive test names
-
-## 📦 Pull Request Process
-
-1. **Update your fork** with the latest changes from upstream
-2. **Create a feature branch** from `develop` (the integration branch)
-3. **Make your changes** following the code style guidelines
-4. **Add tests** for new functionality
-5. **Update documentation** if needed
-6. **Ensure all checks pass** (lint, format, tests, build)
-7. **Submit a pull request** with a clear description
-
-### PR Checklist
-
-- [ ] Code follows the project's style guidelines
-- [ ] Tests added/updated and passing
-- [ ] Documentation updated (if needed)
-- [ ] No console errors or warnings
-- [ ] Build succeeds
-- [ ] Linting passes
-- [ ] Formatting is correct
-
-## 🐛 Reporting Issues
-
-When reporting issues, please include:
-
-- **Description**: Clear description of the issue
-- **Steps to reproduce**: Detailed steps to reproduce the issue
-- **Expected behavior**: What you expected to happen
-- **Actual behavior**: What actually happened
-- **Environment**: Node.js version, OS, browser (if applicable)
-- **Screenshots**: If applicable
-
-## 💡 Feature Requests
-
-Feature requests are welcome! Please:
-
-- Check if the feature has already been requested
-- Provide a clear description of the feature
-- Explain the use case and benefits
-- Consider implementation complexity
-
-## 📄 License
-
-By contributing, you agree that your contributions will be licensed under the MIT License.
-
-## 🙏 Thank You!
-
-Your contributions make this project better for everyone. Thank you for taking the time to contribute!
+By contributing you agree that your contributions are licensed under the [MIT License](./LICENSE).

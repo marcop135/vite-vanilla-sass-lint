@@ -2,10 +2,8 @@ import '../scss/main.scss';
 
 import viteLogo from '../images/vite.svg';
 
-// Get app element with error handling
 const app = document.querySelector('#app');
 if (!app) {
-  console.error('App element not found');
   throw new Error('App element (#app) not found in DOM');
 }
 

@@ -9,6 +9,13 @@ import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 
+/**
+ * Increment the patch component of a `Major.Minor.Patch` semver string.
+ *
+ * @param {string} version - Existing semver (no prerelease or build suffix).
+ * @returns {string} Version with `Patch + 1`.
+ * @throws {Error} When `version` is not strict `Major.Minor.Patch`.
+ */
 function bumpPatch(version) {
   const m = /^(\d+)\.(\d+)\.(\d+)$/.exec(String(version).trim());
   if (!m)
@@ -21,6 +28,15 @@ function utcDateStamp() {
   return new Date().toISOString().slice(0, 10);
 }
 
+/**
+ * Insert a new `## [version] - date` block before the first existing version
+ * section, collapsing any blank lines so spacing is consistent.
+ *
+ * @param {string} changelogBody - Full CHANGELOG.md contents.
+ * @param {string} version - Version to record (no leading `v`).
+ * @param {string} date - ISO date stamp (`YYYY-MM-DD`).
+ * @returns {string} Updated CHANGELOG.md contents.
+ */
 function prependChangelogEntry(changelogBody, version, date) {
   const lines = changelogBody.split(/\r?\n/);
   let i = 0;

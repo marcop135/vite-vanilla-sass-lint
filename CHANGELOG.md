@@ -2,6 +2,15 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; add **(WIP)** for incomplete work.
 
+## [1.9.2] - 2026-05-12
+
+- **Docs:** Trim `CONTRIBUTING.md`: drop duplicated PR checklist and issue/feature sections now covered by templates; drop stale `.env.example` reference; condense code-quality gates to `release:check`.
+- **Docs:** Add `SECURITY.md`, PR template, and bug/feature issue templates under `.github/`.
+- **Build:** Add `.prettierignore` (`dist/`, `coverage/`, `node_modules/`, `.husky/_`, `package-lock.json`, `CHANGELOG.md`).
+- **Docs:** Add JSDoc `@param`/`@returns`/`@throws` to helpers in `scripts/release-notes-from-changelog.mjs` and `scripts/bump-patch-maintenance.mjs`.
+- **Style:** Drop redundant `console.error` before `throw` in `src/assets/js/main.js`.
+- **Docs:** Refresh `IMPROVEMENTS.md` (close shipped items, add cssnano and strict audit gate).
+
 ## [1.9.1] - 2026-05-12
 
 - **Docs:** Rewrite README to lead with quick start; drop duplicated tech stack, manual lint block, and config restatements; consolidate scripts and config pointers into tables.
