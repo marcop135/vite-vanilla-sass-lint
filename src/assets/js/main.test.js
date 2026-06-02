@@ -1,38 +1,44 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 
 describe('Main App', () => {
   beforeEach(() => {
-    // Reset the DOM before each test
     document.body.innerHTML = '<div id="app"></div>';
+    vi.resetModules();
   });
 
-  it('should have an app element', () => {
-    const app = document.querySelector('#app');
-    expect(app).toBeTruthy();
-    expect(app.id).toBe('app');
+  it('throws when the #app element is missing', async () => {
+    document.body.innerHTML = '';
+    await expect(import('./main.js')).rejects.toThrow('#app');
   });
 
-  it('should create wrapper element', () => {
-    const wrapper = document.createElement('div');
-    wrapper.className = 'wrapper';
-    expect(wrapper.className).toBe('wrapper');
+  it('renders the wrapper into #app', async () => {
+    await import('./main.js');
+    expect(document.querySelector('#app .wrapper')).toBeTruthy();
   });
 
-  it('should create main element with h1', () => {
-    const main = document.createElement('main');
-    const h1 = document.createElement('h1');
-    h1.textContent = 'Vite + Sass, No Fuss';
-    main.appendChild(h1);
+  it('renders main with the heading and logo', async () => {
+    await import('./main.js');
 
-    expect(main.querySelector('h1')).toBeTruthy();
-    expect(main.querySelector('h1').textContent).toBe('Vite + Sass, No Fuss');
+    const h1 = document.querySelector('.wrapper main h1');
+    expect(h1).toBeTruthy();
+    expect(h1.textContent).toBe('Vite + Sass, No Fuss');
+
+    const logo = document.querySelector('.wrapper main img.logo');
+    expect(logo).toBeTruthy();
+    expect(logo.alt).toBe('Vite logo');
   });
 
-  it('should create footer element', () => {
-    const footer = document.createElement('footer');
-    const small = document.createElement('small');
-    footer.appendChild(small);
+  it('renders the footer with the starter link', async () => {
+    await import('./main.js');
 
-    expect(footer.querySelector('small')).toBeTruthy();
+    const link = document.querySelector('.wrapper footer small a');
+    expect(link).toBeTruthy();
+    expect(link.getAttribute('href')).toBe(
+      'https://github.com/marcop135/vite-vanilla-sass-lint'
+    );
+    expect(link.textContent).toBe('vite-vanilla-sass-lint');
+    expect(
+      document.querySelector('.wrapper footer small').textContent
+    ).toContain('This project uses the');
   });
 });
