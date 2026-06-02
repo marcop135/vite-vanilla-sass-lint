@@ -2,6 +2,12 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; add **(WIP)** for incomplete work.
 
+## [1.9.4] - 2026-06-02
+
+### Changed
+
+- Automated biweekly maintenance patch: semver patch bump after `release:check`, commit on `develop`, tag; GitHub Release follows the tag; Netlify deploy uses whichever branch you configured (often `develop`).
+
 ## [1.9.3] - 2026-05-17
 
 ### Changed
