@@ -10,6 +10,12 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; append **(WIP)** only for incomplete work.
 
+## [1.9.6] - 2026-06-03
+
+### Changed
+
+- Automated biweekly maintenance patch: semver patch bump after `release:check`, commit on `develop`, tag; GitHub Release follows the tag; Netlify deploy uses whichever branch you configured (often `develop`).
+
 ## [1.9.5] - 2026-06-03
 
 - **Build:** Bump vite 8.0.13 to 8.0.16 ([#57](https://github.com/marcop135/vite-vanilla-sass-lint/pull/57)), vitest 4.1.6 to 4.1.8 ([#56](https://github.com/marcop135/vite-vanilla-sass-lint/pull/56)), eslint 10.3.0 to 10.4.1 ([#65](https://github.com/marcop135/vite-vanilla-sass-lint/pull/65)).
