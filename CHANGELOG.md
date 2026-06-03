@@ -1,18 +1,28 @@
 # Changelog
 
-**Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; add **(WIP)** for incomplete work.
+**Format:** Based on [Keep a Changelog](https://keepachangelog.com).
+
+**Voice:** Use the imperative, like a commit message. Write add, fix, increase, force, not added, fixed, increased, forced.
+
+**Length:** Keep each bullet on one line, max 120 characters (link URLs do not count toward the cap, only the visible text does).
+
+**Links:** Add inline markdown links for related PRs, docs, and external references when they help the reader.
+
+**Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; append **(WIP)** only for incomplete work.
+
+## [1.9.5] - 2026-06-03
+
+- **Build:** Bump vite 8.0.13 to 8.0.16 ([#57](https://github.com/marcop135/vite-vanilla-sass-lint/pull/57)), vitest 4.1.6 to 4.1.8 ([#56](https://github.com/marcop135/vite-vanilla-sass-lint/pull/56)), eslint 10.3.0 to 10.4.1 ([#65](https://github.com/marcop135/vite-vanilla-sass-lint/pull/65)).
+- **Build:** Bump stylelint 17.11.1 to 17.12.0 ([#62](https://github.com/marcop135/vite-vanilla-sass-lint/pull/62)), terser 5.47.1 to 5.48.0 ([#61](https://github.com/marcop135/vite-vanilla-sass-lint/pull/61)), sass-embedded 1.99.0 to 1.100.0 ([#60](https://github.com/marcop135/vite-vanilla-sass-lint/pull/60)).
 
 ## [1.9.4] - 2026-06-02
 
-### Changed
-
-- Automated biweekly maintenance patch: semver patch bump after `release:check`, commit on `develop`, tag; GitHub Release follows the tag; Netlify deploy uses whichever branch you configured (often `develop`).
+- **Sec:** Bump `brace-expansion` to clear a moderate npm audit advisory.
+- **Chore:** Replace tautological `main.js` test assertions with real DOM-output checks.
 
 ## [1.9.3] - 2026-05-17
 
-### Changed
-
-- Automated biweekly maintenance patch: semver patch bump after `release:check`, commit on `develop`, tag; GitHub Release follows the tag; Netlify deploy uses whichever branch you configured (often `develop`).
+- **Build:** Bump vite 8.0.11 to 8.0.13 ([#48](https://github.com/marcop135/vite-vanilla-sass-lint/pull/48)), vitest 4.1.5 to 4.1.6 ([#49](https://github.com/marcop135/vite-vanilla-sass-lint/pull/49)), stylelint 17.11.0 to 17.11.1 ([#53](https://github.com/marcop135/vite-vanilla-sass-lint/pull/53)).
 
 ## [1.9.2] - 2026-05-12
 
