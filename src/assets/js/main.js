@@ -21,6 +21,8 @@ const img = document.createElement('img');
 img.src = viteLogo;
 img.className = 'logo';
 img.alt = 'Vite logo';
+img.width = 200;
+img.height = 201;
 main.appendChild(img);
 
 wrapper.appendChild(main);

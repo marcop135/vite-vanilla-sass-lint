@@ -41,4 +41,27 @@ describe('Main App', () => {
       document.querySelector('.wrapper footer small').textContent
     ).toContain('This project uses the');
   });
+
+  it('renders the wrapper containing both main and footer landmarks', async () => {
+    await import('./main.js');
+
+    const wrapper = document.querySelector('#app .wrapper');
+    expect(wrapper).toBeTruthy();
+    expect(wrapper.querySelector('main')).toBeTruthy();
+    expect(wrapper.querySelector('footer')).toBeTruthy();
+  });
+
+  it('renders exactly one h1', async () => {
+    await import('./main.js');
+
+    expect(document.querySelectorAll('h1')).toHaveLength(1);
+  });
+
+  it('gives the logo a non-empty alt attribute', async () => {
+    await import('./main.js');
+
+    const logo = document.querySelector('.wrapper main img.logo');
+    expect(logo).toBeTruthy();
+    expect(logo.alt.trim().length).toBeGreaterThan(0);
+  });
 });

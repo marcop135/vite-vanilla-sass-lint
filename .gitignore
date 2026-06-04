@@ -20,6 +20,9 @@ Thumbs.db
 coverage/
 .nyc_output/
 
+# Audit workflow screenshots
+.audit-screenshots/
+
 # Husky
 .husky/_/
 

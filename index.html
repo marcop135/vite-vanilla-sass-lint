@@ -12,11 +12,17 @@
       content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self'; frame-ancestors 'none';"
     />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Marco Pontili" />
     <meta
       name="description"
       content="Vite Vanilla JS + Sass starter with ESLint, Stylelint and HTMLHint linting, Vitest, and modern-normalize."
     />
     <meta property="og:type" content="website" />
+    <meta
+      property="og:site_name"
+      content="Vite Vanilla JS + Sass, No-Fuss Starter"
+    />
     <meta
       property="og:title"
       content="Vite Vanilla JS + Sass, No-Fuss Starter"
@@ -43,6 +49,11 @@
       content="Vite Vanilla JS + Sass starter with ESLint, Stylelint and HTMLHint linting, Vitest, and modern-normalize."
     />
     <meta name="twitter:image" content="/og.png" />
+    <meta
+      name="twitter:image:alt"
+      content="Vite + Sass, No Fuss, vite-vanilla-sass-lint starter"
+    />
+    <link rel="modulepreload" href="./src/assets/js/main.js" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" href="/icon-source.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />
@@ -50,6 +61,21 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#e73c7e" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareSourceCode",
+        "name": "vite-vanilla-sass-lint",
+        "description": "Vite Vanilla JS + Sass starter with ESLint, Stylelint and HTMLHint linting, Vitest, and modern-normalize.",
+        "codeRepository": "https://github.com/marcop135/vite-vanilla-sass-lint",
+        "programmingLanguage": ["JavaScript", "Sass"],
+        "license": "https://opensource.org/licenses/MIT",
+        "author": {
+          "@type": "Person",
+          "name": "Marco Pontili"
+        }
+      }
+    </script>
   </head>
 
   <body>
