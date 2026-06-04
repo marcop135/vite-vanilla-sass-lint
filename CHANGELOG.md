@@ -10,6 +10,14 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; append **(WIP)** only for incomplete work.
 
+## [1.10.0] - 2026-06-04
+
+- **Enhance:** Honor `prefers-reduced-motion`, add a `:focus-visible` focus ring, and raise text contrast to WCAG AA.
+- **Enhance:** Add SEO metadata (`robots`, `author`, `og:site_name`, `twitter:image:alt`), `modulepreload`, and JSON-LD.
+- **Perf:** Target `es2020`, drop `cssCodeSplit`, inline small assets, and set logo `width`/`height` to avoid layout shift.
+- **Build:** Narrow `.browserslistrc` to modern ES-module browsers.
+- **Chore:** Tighten ESLint rules, add DOM/a11y tests, add a `perf-audit` skill, and document conventions in `CLAUDE.md`.
+
 ## [1.9.6] - 2026-06-03
 
 ### Changed

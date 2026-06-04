@@ -38,6 +38,7 @@
 
   text-align: center;
   color: #fff;
+  text-shadow: 0 0 4px rgb(0 0 0 / 70%);
 }
 
 main {
@@ -61,6 +62,25 @@ main {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .wrapper {
+    animation: none;
+  }
+
+  main .logo {
+    transition: none;
+
+    &:hover,
+    &:focus {
+      transform: none;
+    }
+  }
+
+  footer a {
+    transition: none;
+  }
+}
+
 footer {
   padding: 1.5rem;
 
@@ -77,6 +97,12 @@ footer {
       color: #fff;
       text-decoration-thickness: 2px;
       text-underline-offset: 3px;
+    }
+
+    &:focus-visible {
+      outline: 3px solid #fff;
+      outline-offset: 3px;
+      border-radius: 2px;
     }
   }
 }
