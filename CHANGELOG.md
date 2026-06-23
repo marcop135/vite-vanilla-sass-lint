@@ -10,6 +10,11 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; append **(WIP)** only for incomplete work.
 
+## [1.10.1] - 2026-06-23
+
+- **Sec:** Bump `undici` 7.25.0 to 7.28.0 ([#82](https://github.com/marcop135/vite-vanilla-sass-lint/pull/82)) and `js-yaml` to 4.2.0 to clear high and moderate audit advisories.
+- **Build:** Bump eslint 10.4.1 to 10.5.0 ([#80](https://github.com/marcop135/vite-vanilla-sass-lint/pull/80)), vitest 4.1.8 to 4.1.9 ([#78](https://github.com/marcop135/vite-vanilla-sass-lint/pull/78), [#79](https://github.com/marcop135/vite-vanilla-sass-lint/pull/79), [#81](https://github.com/marcop135/vite-vanilla-sass-lint/pull/81)).
+
 ## [1.10.0] - 2026-06-04
 
 - **Enhance:** Honor `prefers-reduced-motion`, add a `:focus-visible` focus ring, and raise text contrast to WCAG AA.
