@@ -10,6 +10,12 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; append **(WIP)** only for incomplete work.
 
+## [1.10.2] - 2026-07-03
+
+### Changed
+
+- Automated biweekly maintenance patch: semver patch bump after `release:check`, commit on `develop`, tag; GitHub Release follows the tag; Netlify deploy uses whichever branch you configured (often `develop`).
+
 ## [1.10.1] - 2026-06-23
 
 - **Sec:** Bump `undici` 7.25.0 to 7.28.0 ([#82](https://github.com/marcop135/vite-vanilla-sass-lint/pull/82)) and `js-yaml` to 4.2.0 to clear high and moderate audit advisories.
