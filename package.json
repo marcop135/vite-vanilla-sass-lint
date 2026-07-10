@@ -60,7 +60,7 @@
   },
   "homepage": "https://github.com/marcop135/vite-vanilla-sass-lint#readme",
   "devDependencies": {
-    "@vitest/coverage-v8": "^4.1.9",
+    "@vitest/coverage-v8": "^4.1.10",
     "@vitest/ui": "^4.1.9",
     "autoprefixer": "^10.5.2",
     "eslint": "^10.6.0",
