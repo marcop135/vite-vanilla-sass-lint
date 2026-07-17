@@ -63,7 +63,7 @@
     "@vitest/coverage-v8": "^4.1.9",
     "@vitest/ui": "^4.1.10",
     "autoprefixer": "^10.5.2",
-    "eslint": "^10.6.0",
+    "eslint": "^10.7.0",
     "globals": "^17.7.0",
     "html-validate": "^10.15.0",
     "htmlhint": "^1.8.1",
