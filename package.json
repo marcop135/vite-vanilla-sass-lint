@@ -1,6 +1,6 @@
 {
   "name": "vite-vanilla-sass-lint",
-  "version": "1.10.1",
+  "version": "1.10.4",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -61,32 +61,33 @@
   "homepage": "https://github.com/marcop135/vite-vanilla-sass-lint#readme",
   "devDependencies": {
     "@vitest/coverage-v8": "^4.1.9",
-    "@vitest/ui": "^4.1.9",
-    "autoprefixer": "^10.4.24",
-    "eslint": "^10.5.0",
-    "globals": "^17.6.0",
+    "@vitest/ui": "^4.1.10",
+    "autoprefixer": "^10.5.4",
+    "eslint": "^10.7.0",
+    "globals": "^17.7.0",
     "html-validate": "^10.15.0",
     "htmlhint": "^1.8.1",
     "husky": "^9.1.7",
     "jsdom": "^29.1.1",
     "lint-staged": "^16.4.0",
-    "postcss": "^8.5.13",
-    "prettier": "^3.8.4",
+    "postcss": "^8.5.22",
+    "prettier": "^3.9.6",
     "rollup-plugin-visualizer": "^7.0.1",
     "sass-embedded": "^1.100.0",
-    "stylelint": "^17.13.0",
+    "stylelint": "^17.14.1",
     "stylelint-config-standard-scss": "^17.0.0",
-    "terser": "^5.48.0",
-    "vite": "^8.0.16",
-    "vite-plugin-eslint2": "^5.0.5",
+    "terser": "^5.49.0",
+    "vite": "^8.1.5",
+    "vite-plugin-eslint2": "^5.3.0",
     "vite-plugin-html": "^3.2.2",
-    "vite-plugin-stylelint": "^6.0.4",
+    "vite-plugin-stylelint": "^6.3.0",
     "vitest": "^4.1.9"
   },
   "dependencies": {
     "modern-normalize": "^3.0.1"
   },
   "overrides": {
-    "fast-uri": "^3.1.2"
+    "brace-expansion": "^5.0.8",
+    "fast-uri": "^3.1.4"
   }
 }
