@@ -10,6 +10,12 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; append **(WIP)** only for incomplete work.
 
+## [1.10.4] - 2026-07-28
+
+- **Sec:** Override `fast-uri` to `^3.1.4` and `brace-expansion` to `^5.0.8` to clear six high-severity Dependabot alerts.
+- **Build:** Bump vite 8.1.4 to 8.1.5 ([#109](https://github.com/marcop135/vite-vanilla-sass-lint/pull/109)), eslint 10.6.0 to 10.7.0 ([#111](https://github.com/marcop135/vite-vanilla-sass-lint/pull/111)), postcss 8.5.13 to 8.5.24 ([#116](https://github.com/marcop135/vite-vanilla-sass-lint/pull/116)), prettier 3.9.5 to 3.9.6 ([#118](https://github.com/marcop135/vite-vanilla-sass-lint/pull/118)), stylelint 17.14.0 to 17.14.1 ([#119](https://github.com/marcop135/vite-vanilla-sass-lint/pull/119)), autoprefixer 10.5.2 to 10.5.4 ([#110](https://github.com/marcop135/vite-vanilla-sass-lint/pull/110)).
+- **CI:** Bump actions/checkout 6.0.3 to 7.0.1 ([#115](https://github.com/marcop135/vite-vanilla-sass-lint/pull/115)) and actions/setup-node 6.4.0 to 7.0.0 ([#107](https://github.com/marcop135/vite-vanilla-sass-lint/pull/107)).
+
 ## [1.10.3] - 2026-07-17
 
 ### Changed
