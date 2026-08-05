@@ -88,6 +88,6 @@
   },
   "overrides": {
     "brace-expansion": "^5.0.8",
-    "fast-uri": "^3.1.4"
+    "fast-uri": "^3.1.5"
   }
 }
