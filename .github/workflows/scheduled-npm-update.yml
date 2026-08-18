@@ -24,6 +24,15 @@ jobs:
           node-version: 22.x
           cache: 'npm'
 
+      # Materialize the lockfile tree before updating. Running `npm update` against a bare
+      # checkout makes arborist build an ideal tree from nothing, which crashes with
+      # "Cannot read properties of null (reading 'edgesOut')" on the npm bundled with
+      # Node 22.x. Kept in step with the sibling repo, where that crash was observed.
+      - name: Install from lockfile
+        run: npm ci
+        env:
+          HUSKY: 0
+
       - name: Update dependencies within ranges
         run: npm update
         env:
