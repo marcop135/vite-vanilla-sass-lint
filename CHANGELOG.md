@@ -10,6 +10,11 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; append **(WIP)** only for incomplete work.
 
+## [1.10.8] - 2026-08-18
+
+- **Chore:** Delete the unused `.env.example`; the project reads no `VITE_` variable and nothing referenced the file.
+- **Chore:** Drop the stale `.sass-cache/` ignore rule; `sass-embedded` never writes that directory.
+
 ## [1.10.7] - 2026-08-18
 
 - **Fix:** Run `npm ci` before `npm update` in the scheduled workflow; updating a bare checkout crashes npm's arborist.
