@@ -37,6 +37,9 @@ jobs:
       - name: Open pull request
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1
         with:
+          # PRs opened with the default GITHUB_TOKEN do not trigger workflows, so ci.yml
+          # would never run and the required lint-and-test (22.x) check could never pass.
+          token: ${{ secrets.RELEASE_PAT }}
           base: develop
           branch: chore/npm-update-${{ github.run_id }}
           title: 'chore(deps): biweekly npm update'

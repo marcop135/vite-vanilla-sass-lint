@@ -44,5 +44,10 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Audit dependencies
-        run: npm audit --audit-level=moderate
+      # Gate on production dependencies only. Dev-tool advisories are surfaced by the
+      # next step but must not be able to freeze releases when no fix is published yet.
+      - name: Audit production dependencies
+        run: npm run audit:prod
+
+      - name: Audit full tree (advisory, non-blocking)
+        run: npm audit --audit-level=moderate || true
