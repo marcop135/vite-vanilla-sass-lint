@@ -10,8 +10,6 @@ Thumbs.db
 # Log files
 *.log
 
-.sass-cache/
-
 # Local environment files
 *.env
 *.local
@@ -28,5 +26,3 @@ coverage/
 
 # Netlify CLI local state
 .netlify/
-
-
