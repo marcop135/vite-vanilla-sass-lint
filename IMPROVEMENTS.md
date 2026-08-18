@@ -10,5 +10,5 @@ Open items only. Items previously listed here that have since shipped (license f
 
 ## Build / Config
 
-- **Audit gate**: `release:check` runs `npm audit --audit-level=moderate`. Tightening to `--audit-level=high` would fail loudly on high/critical without churning on moderate noise.
+- **Dev-advisory triage**: `release:check` now gates on production deps only, with a non-blocking full-tree audit in CI. Consider failing the advisory step when a dev advisory is high/critical *and* a fixed version exists, so genuinely actionable ones are not ignored.
 - **HTMLHint semantics**: enable rules for ARIA, alt text, semantic-element usage if not covered by `html-validate:recommended`.

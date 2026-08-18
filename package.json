@@ -1,6 +1,6 @@
 {
   "name": "vite-vanilla-sass-lint",
-  "version": "1.10.4",
+  "version": "1.10.6",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -12,12 +12,13 @@
     "format:check": "prettier --check \"src/**/*.{js,css,scss,html,md}\" index.html",
     "clean": "rm -rf dist",
     "audit": "npm audit",
+    "audit:prod": "npm audit --omit=dev --audit-level=moderate",
     "audit:fix": "npm audit fix",
     "test": "vitest",
     "test:ci": "vitest run",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage",
-    "release:check": "npm run lint && npm run format:check && npm run test:ci && npm run build && npm audit --audit-level=moderate",
+    "release:check": "npm run lint && npm run format:check && npm run test:ci && npm run build && npm run audit:prod",
     "analyze": "vite build --mode analyze",
     "prepare": "husky"
   },
@@ -85,9 +86,5 @@
   },
   "dependencies": {
     "modern-normalize": "^3.0.1"
-  },
-  "overrides": {
-    "brace-expansion": "^5.0.8",
-    "fast-uri": "^3.1.4"
   }
 }
