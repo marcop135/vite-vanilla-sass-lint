@@ -183,10 +183,19 @@ jobs:
           fi
           echo "name=v${VERSION}" >> "$GITHUB_OUTPUT"
 
-      # Fast-forward main to develop. Refuses non-fast-forward pushes by default,
-      # so if main has diverged the workflow fails loudly instead of overwriting.
+      # Bring main up to develop. A plain fast-forward push breaks permanently the first
+      # time main gains a commit develop does not have (security PRs from dependabot land
+      # on the default branch), so merge instead. History is preserved either way: when
+      # main is strictly behind, the merge is a fast-forward and no merge commit appears.
       - name: Sync main with develop
-        run: git push origin develop:main
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin main develop
+          git checkout -B sync-main origin/main
+          git merge --no-edit origin/develop
+          git push origin sync-main:main
 
   publish:
     needs: release

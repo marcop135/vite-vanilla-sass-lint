@@ -10,6 +10,15 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; append **(WIP)** only for incomplete work.
 
+## [1.10.6] - 2026-08-18
+
+- **CI:** Scope the `release:check` audit gate to production deps; keep full-tree `npm audit` as a non-blocking step.
+- **Sec:** Bump `brace-expansion` 5.0.9, `fast-uri` 3.1.5, `js-yaml` 4.3.1, and `nanoid` 3.3.18 via `npm audit fix`.
+- **Build:** Add an `audit:prod` script and drop the now-redundant `brace-expansion` and `fast-uri` overrides.
+- **CI:** Open scheduled `npm update` PRs with `RELEASE_PAT` so `ci.yml` fires and the required check can report.
+- **Fix:** Merge `develop` into `main` in the release sync step; the fast-forward push failed on every run since June.
+- **Docs:** Fill in `AGENTS.md` and document the audit gate and release flow in `README.md` and `CONTRIBUTING.md`.
+
 ## [1.10.5] - 2026-08-03
 
 ### Changed

@@ -15,7 +15,9 @@ See [README.md](./README.md#quick-start) for the Quick start path.
 
 ## Workflow
 
-Before opening a PR, run `npm run release:check`. It runs the same gates as CI: lint, format check, test, build, and `npm audit` at the moderate threshold.
+Before opening a PR, run `npm run release:check`. It runs the same gates as CI: lint, format check, test, build, and `npm run audit:prod` (`npm audit --omit=dev` at the moderate threshold).
+
+The gate is scoped to production dependencies on purpose. CI still prints a full-tree `npm audit` as a non-blocking step, so dev-toolchain advisories stay visible; clear them with `npm run audit:fix` rather than letting them block a release.
 
 Pre-commit hooks (Husky + lint-staged) run ESLint, Stylelint, and Prettier on staged files. If they fail, fix the reported issues and commit again.
 
