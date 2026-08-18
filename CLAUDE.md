@@ -17,6 +17,8 @@ Guidance for working in this repo.
 - `npm run dev` (port 3000), `npm run build`, `npm run preview`
 - `npm run lint`, `npm run lint:fix`, `npm run format`
 - `npm run test:ci`, `npm run test:coverage`
+- `npm run release:check`: the CI gate (lint + format check + tests + build + `npm run audit:prod`)
+- `npm run audit:prod`: `npm audit --omit=dev --audit-level=moderate`; full-tree `npm audit` runs in CI as a non-blocking advisory step
 - `npm run analyze` (bundle visualizer to `dist/stats.html`)
 - `node scripts/screenshot.mjs <outDir>` captures the page at desktop/tablet/mobile (needs Playwright + system Chrome; see the `perf-audit` skill).
 

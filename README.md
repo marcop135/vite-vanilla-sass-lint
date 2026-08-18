@@ -43,9 +43,10 @@ Dev server runs on `http://localhost:3000`.
 | `npm run test:ui`       | Vitest UI                                                     |
 | `npm run test:coverage` | Vitest coverage report                                        |
 | `npm run analyze`       | Build with bundle visualizer, opens `dist/stats.html`         |
-| `npm run audit`         | `npm audit`                                                   |
+| `npm run audit`         | `npm audit` across the full tree (dev included)               |
+| `npm run audit:prod`    | `npm audit --omit=dev --audit-level=moderate`                 |
 | `npm run audit:fix`     | `npm audit fix`                                               |
-| `npm run release:check` | Same gates as CI: lint, format, test, build, audit (moderate) |
+| `npm run release:check` | Same gates as CI: lint, format, test, build, `audit:prod`     |
 | `npm run clean`         | Remove `dist/`                                                |
 
 ## Project layout
@@ -81,9 +82,13 @@ Production build emits ESM only and uses `sourcemap: 'hidden'`: maps are produce
 
 ## Releases
 
-Changes land on `develop`, then a release commit (`chore(release): X.Y.Z`) merges to `develop`, the merge is tagged `vX.Y.Z`, and `main` is fast-forwarded. The `release.yml` workflow then runs `release:check` against the tag and publishes a GitHub Release whose body is built from `CHANGELOG.md` by `scripts/release-notes-from-changelog.mjs`.
+Changes land on `develop`, then a release commit (`chore(release): X.Y.Z`) merges to `develop`, the merge is tagged `vX.Y.Z`, and `main` is merged up from `develop`. The `release.yml` workflow then runs `release:check` against the tag and publishes a GitHub Release whose body is built from `CHANGELOG.md` by `scripts/release-notes-from-changelog.mjs`.
 
-A scheduled workflow (`scheduled-patch-release.yml`) runs the bump, PR, merge, tag, and `main` fast-forward biweekly on the 3rd and 17th UTC. See [`CHANGELOG.md`](./CHANGELOG.md) for the full history.
+A scheduled workflow (`scheduled-patch-release.yml`) runs the bump, PR, merge, tag, and `main` sync biweekly on the 3rd and 17th UTC. The sync merges rather than fast-forwards, so a commit that lands on `main` alone (Dependabot security PRs target the default branch) cannot wedge the pipeline. See [`CHANGELOG.md`](./CHANGELOG.md) for the full history.
+
+### Audit gate
+
+`release:check` blocks on production dependencies only (`npm run audit:prod`). CI additionally runs a non-blocking full-tree `npm audit` so dev-toolchain advisories stay visible without being able to freeze releases when upstream has not published a fix yet. Run `npm run audit:fix` to clear them.
 
 ## Requirements
 
