@@ -10,6 +10,12 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; append **(WIP)** only for incomplete work.
 
+## [1.10.7] - 2026-08-18
+
+- **Fix:** Run `npm ci` before `npm update` in the scheduled workflow; updating a bare checkout crashes npm's arborist.
+- **Build:** Bump vite 8.2.1 ([#136](https://github.com/marcop135/vite-vanilla-sass-lint/pull/136)), eslint 10.8.1 ([#138](https://github.com/marcop135/vite-vanilla-sass-lint/pull/138)), postcss 8.5.26 ([#137](https://github.com/marcop135/vite-vanilla-sass-lint/pull/137)), terser 5.50.0 ([#139](https://github.com/marcop135/vite-vanilla-sass-lint/pull/139)), globals 17.11.0 ([#133](https://github.com/marcop135/vite-vanilla-sass-lint/pull/133)).
+- **Build:** Apply the biweekly `npm update`: sass-embedded 1.102.0, rollup-plugin-visualizer 7.1.1, plus transitive dev bumps ([#142](https://github.com/marcop135/vite-vanilla-sass-lint/pull/142)).
+
 ## [1.10.6] - 2026-08-18
 
 - **CI:** Scope the `release:check` audit gate to production deps; keep full-tree `npm audit` as a non-blocking step.
