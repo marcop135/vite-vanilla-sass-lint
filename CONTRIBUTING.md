@@ -21,6 +21,8 @@ The gate is scoped to production dependencies on purpose. CI still prints a full
 
 Pre-commit hooks (Husky + lint-staged) run ESLint, Stylelint, and Prettier on staged files. If they fail, fix the reported issues and commit again.
 
+Branch from `develop` and target `develop`; `main` is the released mirror. Dependency PRs mostly look after themselves: patch and minor bumps from Dependabot, and the biweekly `npm update` PR, auto-merge once `lint-and-test (22.x)` passes. Major-version bumps stay open and need a human to review the breaking changes.
+
 ## Code style
 
 - **JavaScript:** ES2020+. Strict equality (`===`). Single quotes. camelCase. JSDoc on non-trivial functions. Rules live in `eslint.config.js`.
