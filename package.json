@@ -66,7 +66,7 @@
     "autoprefixer": "^10.5.4",
     "eslint": "^10.8.1",
     "globals": "^17.11.0",
-    "html-validate": "^10.15.0",
+    "html-validate": "^11.10.0",
     "htmlhint": "^1.8.1",
     "husky": "^9.1.7",
     "jsdom": "^29.1.1",
