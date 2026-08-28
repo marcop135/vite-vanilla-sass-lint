@@ -23,10 +23,10 @@ Do not re-scope `release:check` to the full tree. A dev-only advisory with no pu
 
 ## Git
 
-- Default branch on GitHub is `main`, but **all work branches from and targets `develop`**.
+- `develop` is the default branch and the integration branch: **all work branches from and targets `develop`**. `main` is the released mirror, synced by the release workflow and tagged at every version.
 - `develop` is protected: PR required, `lint-and-test (22.x)` is the required status check, strict mode on (branch must be up to date). Never rename that job or its `22.x` matrix entry; the protection rule matches the check by name.
 - Releases: `chore(release): X.Y.Z` merges into `develop`, the merge commit is tagged `vX.Y.Z`, `release.yml` publishes the GitHub Release from `CHANGELOG.md` via `scripts/release-notes-from-changelog.mjs`, and `scheduled-patch-release.yml` merges `develop` into `main`.
-- Dependabot targets `develop` (`.github/dependabot.yml`). Its *security* PRs still land on `main`, because setting `target-branch` disables security updates for that config; `dependabot-auto-merge.yml` only listens on `develop`, so those need manual handling.
+- Dependabot targets `develop` because `develop` is the default branch. Never add `target-branch` to `.github/dependabot.yml`: setting it disables _security_ updates for that config, so security PRs would fall back to the default branch outside the ecosystem's own routing. `dependabot-auto-merge.yml` auto-merges patch and minor on `develop`; majors are reviewed by hand.
 - Automation that opens PRs must pass `secrets.RELEASE_PAT`, not the default `GITHUB_TOKEN`: PRs created by `GITHUB_TOKEN` do not trigger workflows, so the required check never runs and auto-merge blocks forever.
 - Conventional commit subjects, imperative mood, first line under 72 characters.
 - Changelog: prepend to `CHANGELOG.md` following its own header rules (Keep a Changelog, imperative voice, one line per bullet, 120 visible characters max, **Build / Chore / CI / Docs / Enhance / Feat / Fix / Perf / Revert / Sec / Style** labels).

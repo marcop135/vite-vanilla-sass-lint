@@ -44,6 +44,7 @@ jobs:
           HUSKY: 0
 
       - name: Open pull request
+        id: cpr
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1
         with:
           # PRs opened with the default GITHUB_TOKEN do not trigger workflows, so ci.yml
@@ -62,3 +63,15 @@ jobs:
             dependencies
             automated
           delete-branch: true
+
+      # develop is protected with the required lint-and-test (22.x) check, so --auto queues the
+      # merge behind CI rather than merging on the spot. release:check already passed above; this
+      # is the second gate. Without this the PR sits open and the 3rd/17th release ships without it.
+      # The guard skips no-op runs: when npm update changes nothing, no PR is opened and the
+      # step outputs are empty.
+      - name: Enable auto-merge
+        if: steps.cpr.outputs.pull-request-operation == 'created' || steps.cpr.outputs.pull-request-operation == 'updated'
+        run: gh pr merge --auto --squash --delete-branch "$PR_URL"
+        env:
+          PR_URL: ${{ steps.cpr.outputs.pull-request-url }}
+          GH_TOKEN: ${{ secrets.RELEASE_PAT }}
