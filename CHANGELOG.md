@@ -15,6 +15,7 @@
 - **CI:** Enable auto-merge on the biweekly `npm update` PR so it lands before the patch release instead of sitting open.
 - **CI:** Drop `target-branch` from `dependabot.yml` and make `develop` the default branch, so security PRs stop landing on `main`.
 - **Docs:** Record the dependency intake path in `README.md`, `AGENTS.md`, and `CONTRIBUTING.md`; pin the degit example to `#main`.
+- **Build:** Apply the biweekly `npm update`: eslint 10.9.1, vite 8.2.2, vitest 4.1.11, sass-embedded 1.103.1 ([#147](https://github.com/marcop135/vite-vanilla-sass-lint/pull/147)).
 
 ## [1.10.8] - 2026-08-18
 
