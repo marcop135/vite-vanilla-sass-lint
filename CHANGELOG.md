@@ -10,6 +10,12 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; append **(WIP)** only for incomplete work.
 
+## [1.10.9] - 2026-08-28
+
+- **CI:** Enable auto-merge on the biweekly `npm update` PR so it lands before the patch release instead of sitting open.
+- **CI:** Drop `target-branch` from `dependabot.yml` and make `develop` the default branch, so security PRs stop landing on `main`.
+- **Docs:** Record the dependency intake path in `README.md`, `AGENTS.md`, and `CONTRIBUTING.md`; pin the degit example to `#main`.
+
 ## [1.10.8] - 2026-08-18
 
 - **Chore:** Delete the unused `.env.example`; the project reads no `VITE_` variable and nothing referenced the file.

@@ -1,14 +1,16 @@
+# No `target-branch` on purpose. Setting it disables Dependabot *security* updates for that
+# ecosystem, which would push security PRs onto the default branch with no automation covering
+# them. `develop` is the default branch, so version and security PRs both land there and
+# `dependabot-auto-merge.yml` handles patch and minor.
 version: 2
 updates:
   - package-ecosystem: 'npm'
     directory: '/'
-    target-branch: 'develop'
     schedule:
       interval: 'weekly'
     open-pull-requests-limit: 10
   - package-ecosystem: 'github-actions'
     directory: '/'
-    target-branch: 'develop'
     schedule:
       interval: 'weekly'
     open-pull-requests-limit: 10

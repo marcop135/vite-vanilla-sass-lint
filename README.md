@@ -11,13 +11,15 @@ Use this when you want a small, framework-free static site or web app and you do
 ## Quick start
 
 ```bash
-npx degit marcop135/vite-vanilla-sass-lint my-app
+npx degit marcop135/vite-vanilla-sass-lint#main my-app
 cd my-app
 npm install
 npm run dev
 ```
 
 Dev server runs on `http://localhost:3000`.
+
+`main` is the released mirror, tagged at every version. `develop` is the default and integration branch, where dependency updates land first; scaffold from it by dropping the `#main` suffix.
 
 ## What's included
 
@@ -29,25 +31,25 @@ Dev server runs on `http://localhost:3000`.
 
 ## Scripts
 
-| Command                 | What it does                                                  |
-| ----------------------- | ------------------------------------------------------------- |
-| `npm run dev`           | Start Vite dev server                                         |
-| `npm run build`         | Production build to `dist/`                                   |
-| `npm run preview`       | Serve the production build locally                            |
-| `npm run lint`          | ESLint + Stylelint + HTMLHint + html-validate                 |
-| `npm run lint:fix`      | Same, auto-fixing what's fixable                              |
-| `npm run format`        | Prettier write across `src/**` and root `index.html`          |
-| `npm run format:check`  | Prettier check (no writes)                                    |
-| `npm run test`          | Vitest watch                                                  |
-| `npm run test:ci`       | Vitest single run                                             |
-| `npm run test:ui`       | Vitest UI                                                     |
-| `npm run test:coverage` | Vitest coverage report                                        |
-| `npm run analyze`       | Build with bundle visualizer, opens `dist/stats.html`         |
-| `npm run audit`         | `npm audit` across the full tree (dev included)               |
-| `npm run audit:prod`    | `npm audit --omit=dev --audit-level=moderate`                 |
-| `npm run audit:fix`     | `npm audit fix`                                               |
-| `npm run release:check` | Same gates as CI: lint, format, test, build, `audit:prod`     |
-| `npm run clean`         | Remove `dist/`                                                |
+| Command                 | What it does                                              |
+| ----------------------- | --------------------------------------------------------- |
+| `npm run dev`           | Start Vite dev server                                     |
+| `npm run build`         | Production build to `dist/`                               |
+| `npm run preview`       | Serve the production build locally                        |
+| `npm run lint`          | ESLint + Stylelint + HTMLHint + html-validate             |
+| `npm run lint:fix`      | Same, auto-fixing what's fixable                          |
+| `npm run format`        | Prettier write across `src/**` and root `index.html`      |
+| `npm run format:check`  | Prettier check (no writes)                                |
+| `npm run test`          | Vitest watch                                              |
+| `npm run test:ci`       | Vitest single run                                         |
+| `npm run test:ui`       | Vitest UI                                                 |
+| `npm run test:coverage` | Vitest coverage report                                    |
+| `npm run analyze`       | Build with bundle visualizer, opens `dist/stats.html`     |
+| `npm run audit`         | `npm audit` across the full tree (dev included)           |
+| `npm run audit:prod`    | `npm audit --omit=dev --audit-level=moderate`             |
+| `npm run audit:fix`     | `npm audit fix`                                           |
+| `npm run release:check` | Same gates as CI: lint, format, test, build, `audit:prod` |
+| `npm run clean`         | Remove `dist/`                                            |
 
 ## Project layout
 
@@ -84,7 +86,11 @@ Production build emits ESM only and uses `sourcemap: 'hidden'`: maps are produce
 
 Changes land on `develop`, then a release commit (`chore(release): X.Y.Z`) merges to `develop`, the merge is tagged `vX.Y.Z`, and `main` is merged up from `develop`. The `release.yml` workflow then runs `release:check` against the tag and publishes a GitHub Release whose body is built from `CHANGELOG.md` by `scripts/release-notes-from-changelog.mjs`.
 
-A scheduled workflow (`scheduled-patch-release.yml`) runs the bump, PR, merge, tag, and `main` sync biweekly on the 3rd and 17th UTC. The sync merges rather than fast-forwards, so a commit that lands on `main` alone (Dependabot security PRs target the default branch) cannot wedge the pipeline. See [`CHANGELOG.md`](./CHANGELOG.md) for the full history.
+A scheduled workflow (`scheduled-patch-release.yml`) runs the bump, PR, merge, tag, and `main` sync biweekly on the 3rd and 17th UTC. The sync merges rather than fast-forwards, so a commit that lands on `main` alone cannot wedge the pipeline. See [`CHANGELOG.md`](./CHANGELOG.md) for the full history.
+
+### Dependency updates
+
+Dependabot opens weekly version and security PRs against `develop`. `dependabot-auto-merge.yml` squash-merges patch and minor updates once `lint-and-test (22.x)` passes; major-version bumps are left open for review. A second workflow (`scheduled-npm-update.yml`) runs `npm update` on the 1st and 15th UTC, verifies it with `release:check`, and opens a PR that auto-merges on the same required check, two days before the release job runs.
 
 ### Audit gate
 
