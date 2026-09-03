@@ -69,7 +69,7 @@
     "html-validate": "^10.15.0",
     "htmlhint": "^1.8.1",
     "husky": "^9.1.7",
-    "jsdom": "^29.1.1",
+    "jsdom": "^30.0.1",
     "lint-staged": "^16.4.0",
     "postcss": "^8.5.26",
     "prettier": "^3.9.6",
