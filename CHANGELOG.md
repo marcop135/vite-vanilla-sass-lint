@@ -10,6 +10,12 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; append **(WIP)** only for incomplete work.
 
+## [1.10.10] - 2026-09-03
+
+### Changed
+
+- Automated biweekly maintenance patch: semver patch bump after `release:check`, commit on `develop`, tag; GitHub Release follows the tag; Netlify deploy uses whichever branch you configured (often `develop`).
+
 ## [1.10.9] - 2026-08-28
 
 - **CI:** Enable auto-merge on the biweekly `npm update` PR so it lands before the patch release instead of sitting open.
