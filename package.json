@@ -72,7 +72,7 @@
     "jsdom": "^29.1.1",
     "lint-staged": "^16.4.0",
     "postcss": "^8.5.28",
-    "prettier": "^3.9.6",
+    "prettier": "^3.9.8",
     "rollup-plugin-visualizer": "^7.0.1",
     "sass-embedded": "^1.104.1",
     "stylelint": "^17.15.0",
