@@ -4,6 +4,10 @@
 
 # Vite Vanilla JS + Sass Starter
 
+[![CI](https://github.com/marcop135/vite-vanilla-sass-lint/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/marcop135/vite-vanilla-sass-lint/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/marcop135/vite-vanilla-sass-lint)](https://github.com/marcop135/vite-vanilla-sass-lint/releases)
+[![License: MIT](https://img.shields.io/github/license/marcop135/vite-vanilla-sass-lint)](./LICENSE)
+
 A [Vite](https://vitejs.dev/) starter for vanilla JavaScript and Sass with linting, formatting, tests, and a tagged-release pipeline already wired up.
 
 Use this when you want a small, framework-free static site or web app and you do not want to spend half a day configuring ESLint, Stylelint, HTMLHint, html-validate, Prettier, Vitest, Husky, and a release workflow yourself.
@@ -103,7 +107,7 @@ Dependabot opens weekly version and security PRs against `develop`. `dependabot-
 
 ## Contributing
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md). Bug reports and feature requests go through [issues](https://github.com/marcop135/vite-vanilla-sass-lint/issues).
+See [CONTRIBUTING.md](./CONTRIBUTING.md). Bug reports and feature requests go through [issues](https://github.com/marcop135/vite-vanilla-sass-lint/issues). Vulnerabilities go through [SECURITY.md](./SECURITY.md) instead, and participation is covered by the [Code of Conduct](./CODE_OF_CONDUCT.md).
 
 ## Author
 
