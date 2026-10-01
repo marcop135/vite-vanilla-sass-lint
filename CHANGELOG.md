@@ -10,6 +10,14 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; append **(WIP)** only for incomplete work.
 
+## Unreleased
+
+- **Feat:** Add `.github/brand/` with SVG sources for the README, OG and GitHub social images in the shared sky-blue style.
+- **Build:** Add `brand:images` and `brand:images:check` scripts; add `playwright` and `sharp` as dev dependencies.
+- **Docs:** Point the README hero at `.github/brand/readme.png`; remove `docs/hero.png` and `public/og.svg`.
+- **Enhance:** Use an absolute `og:image` and `twitter:image` URL for `public/og.png`, now rendered from `.github/brand/og.svg`.
+- **Chore:** Exclude `.github/brand/` from Prettier, ESLint, Stylelint and the Vite dev watcher.
+
 ## [1.10.12] - 2026-09-25
 
 - **Docs:** Add a Contributor Covenant 2.1 code of conduct, linked from the README contributing section.

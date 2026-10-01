@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./docs/hero.png" alt="vite-vanilla-sass-lint hero" width="900" />
+  <img src=".github/brand/readme.png" alt="Vite + Sass, No Fuss: the vite-vanilla-sass-lint starter, with the Vite logo on a sky-blue gradient" width="900" />
 </p>
 
 # Vite Vanilla JS + Sass Starter
@@ -35,25 +35,27 @@ Dev server runs on `http://localhost:3000`.
 
 ## Scripts
 
-| Command                 | What it does                                              |
-| ----------------------- | --------------------------------------------------------- |
-| `npm run dev`           | Start Vite dev server                                     |
-| `npm run build`         | Production build to `dist/`                               |
-| `npm run preview`       | Serve the production build locally                        |
-| `npm run lint`          | ESLint + Stylelint + HTMLHint + html-validate             |
-| `npm run lint:fix`      | Same, auto-fixing what's fixable                          |
-| `npm run format`        | Prettier write across `src/**` and root `index.html`      |
-| `npm run format:check`  | Prettier check (no writes)                                |
-| `npm run test`          | Vitest watch                                              |
-| `npm run test:ci`       | Vitest single run                                         |
-| `npm run test:ui`       | Vitest UI                                                 |
-| `npm run test:coverage` | Vitest coverage report                                    |
-| `npm run analyze`       | Build with bundle visualizer, opens `dist/stats.html`     |
-| `npm run audit`         | `npm audit` across the full tree (dev included)           |
-| `npm run audit:prod`    | `npm audit --omit=dev --audit-level=moderate`             |
-| `npm run audit:fix`     | `npm audit fix`                                           |
-| `npm run release:check` | Same gates as CI: lint, format, test, build, `audit:prod` |
-| `npm run clean`         | Remove `dist/`                                            |
+| Command                      | What it does                                                 |
+| ---------------------------- | ------------------------------------------------------------ |
+| `npm run dev`                | Start Vite dev server                                        |
+| `npm run build`              | Production build to `dist/`                                  |
+| `npm run preview`            | Serve the production build locally                           |
+| `npm run lint`               | ESLint + Stylelint + HTMLHint + html-validate                |
+| `npm run lint:fix`           | Same, auto-fixing what's fixable                             |
+| `npm run format`             | Prettier write across `src/**` and root `index.html`         |
+| `npm run format:check`       | Prettier check (no writes)                                   |
+| `npm run test`               | Vitest watch                                                 |
+| `npm run test:ci`            | Vitest single run                                            |
+| `npm run test:ui`            | Vitest UI                                                    |
+| `npm run test:coverage`      | Vitest coverage report                                       |
+| `npm run analyze`            | Build with bundle visualizer, opens `dist/stats.html`        |
+| `npm run audit`              | `npm audit` across the full tree (dev included)              |
+| `npm run audit:prod`         | `npm audit --omit=dev --audit-level=moderate`                |
+| `npm run audit:fix`          | `npm audit fix`                                              |
+| `npm run release:check`      | Same gates as CI: lint, format, test, build, `audit:prod`    |
+| `npm run clean`              | Remove `dist/`                                               |
+| `npm run brand:images`       | Render README, OG and social PNGs from `.github/brand/*.svg` |
+| `npm run brand:images:check` | Re-render in memory, exit 1 if any brand image is stale      |
 
 ## Project layout
 
@@ -64,7 +66,7 @@ src/
     js/       entry: main.js, plus *.test.js
     scss/     entry: main.scss
 public/         copied as-is to dist/ (favicons, OG image, site.webmanifest)
-docs/           README assets (hero.png)
+.github/brand/  README, OG and social image sources (npm run brand:images)
 scripts/        release helpers (bump-patch-maintenance, release-notes-from-changelog)
 index.html      Vite entry, references src/assets/js/main.js
 vite.config.js  build config + bundle analyzer toggle

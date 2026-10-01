@@ -20,6 +20,8 @@
     "test:coverage": "vitest --coverage",
     "release:check": "npm run lint && npm run format:check && npm run test:ci && npm run build && npm run audit:prod",
     "analyze": "vite build --mode analyze",
+    "brand:images": "node .github/brand/render.mjs",
+    "brand:images:check": "node .github/brand/render.mjs --check",
     "prepare": "husky"
   },
   "lint-staged": {
@@ -71,10 +73,12 @@
     "husky": "^9.1.7",
     "jsdom": "^29.1.1",
     "lint-staged": "^16.4.0",
+    "playwright": "1.61.1",
     "postcss": "^8.5.28",
     "prettier": "^3.9.8",
     "rollup-plugin-visualizer": "^7.0.1",
     "sass-embedded": "^1.104.1",
+    "sharp": "0.35.4",
     "stylelint": "^17.15.0",
     "stylelint-config-standard-scss": "^17.0.0",
     "terser": "^5.50.0",

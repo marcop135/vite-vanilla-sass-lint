@@ -1,0 +1,7 @@
+{
+  "outputs": [
+    { "source": "readme.svg", "output": "readme.png", "width": 1280, "height": 640, "scale": 2 },
+    { "source": "social.svg", "output": "social.png", "width": 1280, "height": 640, "maxBytes": 1000000 },
+    { "source": "og.svg", "output": "../../public/og.png", "width": 1200, "height": 630, "maxBytes": 300000 }
+  ]
+}
