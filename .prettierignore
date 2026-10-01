@@ -4,3 +4,4 @@ node_modules/
 .husky/_
 package-lock.json
 CHANGELOG.md
+.github/brand/

@@ -12,7 +12,7 @@ export default defineConfig(({ mode }) => ({
     port: 3000,
     open: false,
     watch: {
-      ignored: ['**/.stylelintcache', '**/.eslintcache'],
+      ignored: ['**/.stylelintcache', '**/.eslintcache', '**/.github/brand/**'],
     },
   },
 
