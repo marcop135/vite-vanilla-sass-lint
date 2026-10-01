@@ -10,7 +10,7 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; append **(WIP)** only for incomplete work.
 
-## Unreleased
+## [1.11.0] - 2026-10-01
 
 - **Feat:** Add `.github/brand/` with SVG sources for the README, OG and GitHub social images in the shared sky-blue style.
 - **Build:** Add `brand:images` and `brand:images:check` scripts; add `playwright` and `sharp` as dev dependencies.
