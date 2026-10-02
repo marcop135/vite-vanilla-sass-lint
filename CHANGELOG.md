@@ -10,6 +10,12 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; append **(WIP)** only for incomplete work.
 
+## [1.11.1] - 2026-10-02
+
+- **Build:** Bump html-validate to 11, jsdom to 30, lint-staged to 17 and Vitest to 5.
+- **CI:** Remove Dependabot and the scheduled npm update and patch release workflows.
+- **Docs:** Mark the repo as archived in the README.
+
 ## [1.11.0] - 2026-10-01
 
 - **Feat:** Add `.github/brand/` with SVG sources for the README, OG and GitHub social images in the shared sky-blue style.

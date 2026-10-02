@@ -1,6 +1,6 @@
 {
   "name": "vite-vanilla-sass-lint",
-  "version": "1.11.0",
+  "version": "1.11.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -63,16 +63,16 @@
   },
   "homepage": "https://github.com/marcop135/vite-vanilla-sass-lint#readme",
   "devDependencies": {
-    "@vitest/coverage-v8": "^4.1.9",
-    "@vitest/ui": "^4.1.10",
+    "@vitest/coverage-v8": "^5.0.3",
+    "@vitest/ui": "^5.0.3",
     "autoprefixer": "^10.6.1",
     "eslint": "^10.11.0",
     "globals": "^17.11.0",
-    "html-validate": "^10.15.0",
+    "html-validate": "^11.16.1",
     "htmlhint": "^1.8.1",
     "husky": "^9.1.7",
-    "jsdom": "^29.1.1",
-    "lint-staged": "^16.4.0",
+    "jsdom": "^30.1.1",
+    "lint-staged": "^17.6.0",
     "playwright": "1.61.1",
     "postcss": "^8.5.28",
     "prettier": "^3.9.8",
@@ -86,7 +86,7 @@
     "vite-plugin-eslint2": "^5.3.0",
     "vite-plugin-html": "^3.2.2",
     "vite-plugin-stylelint": "^6.3.0",
-    "vitest": "^4.1.9"
+    "vitest": "^5.0.3"
   },
   "dependencies": {
     "modern-normalize": "^3.0.1"
