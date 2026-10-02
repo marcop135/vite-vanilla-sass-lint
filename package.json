@@ -71,7 +71,7 @@
     "html-validate": "^11.16.1",
     "htmlhint": "^1.8.1",
     "husky": "^9.1.7",
-    "jsdom": "^29.1.1",
+    "jsdom": "^30.1.1",
     "lint-staged": "^16.4.0",
     "playwright": "1.61.1",
     "postcss": "^8.5.28",
