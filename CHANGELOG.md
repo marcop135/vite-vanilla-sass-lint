@@ -10,7 +10,7 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; append **(WIP)** only for incomplete work.
 
-## [Unreleased]
+## [1.11.1] - 2026-10-02
 
 - **Build:** Bump html-validate to 11, jsdom to 30, lint-staged to 17 and Vitest to 5.
 - **CI:** Remove Dependabot and the scheduled npm update and patch release workflows.
