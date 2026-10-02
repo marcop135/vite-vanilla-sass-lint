@@ -13,6 +13,8 @@
 ## [Unreleased]
 
 - **Build:** Bump html-validate to 11, jsdom to 30, lint-staged to 17 and Vitest to 5.
+- **CI:** Remove Dependabot and the scheduled npm update and patch release workflows.
+- **Docs:** Mark the repo as archived in the README.
 
 ## [1.11.0] - 2026-10-01
 

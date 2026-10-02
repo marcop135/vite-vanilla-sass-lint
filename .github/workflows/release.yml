@@ -10,12 +10,6 @@ on:
         description: Existing tag to release (for manual reruns)
         required: true
         type: string
-  workflow_call:
-    inputs:
-      tag:
-        description: Existing tag to release (called from scheduled-patch-release)
-        required: true
-        type: string
 
 jobs:
   verify:
