@@ -19,15 +19,13 @@ Vite 8 + vanilla ES modules + Sass (`sass-embedded`), linted by ESLint, Stylelin
 
 `release:check` blocks on **production dependencies only** (`npm audit --omit=dev --audit-level=moderate`). CI runs a full-tree `npm audit` as a separate non-blocking step so dev-toolchain advisories stay visible.
 
-Do not re-scope `release:check` to the full tree. A dev-only advisory with no published fix would then block every PR, every scheduled npm update, and every release at once, and no single dependency PR could clear it. Clear dev advisories with `npm run audit:fix`. Reach for `overrides` in `package.json` only when no upstream fix exists, and use a caret range, never an exact pin: an exact pin at a version that later turns vulnerable cannot be lifted by `npm update`.
+Do not re-scope `release:check` to the full tree. A dev-only advisory with no published fix would then block every PR and every release at once, and no single dependency PR could clear it. Clear dev advisories with `npm run audit:fix`. Reach for `overrides` in `package.json` only when no upstream fix exists, and use a caret range, never an exact pin: an exact pin at a version that later turns vulnerable cannot be lifted by `npm update`.
 
 ## Git
 
 - `develop` is the default branch and the integration branch: **all work branches from and targets `develop`**. `main` is the released mirror, synced by the release workflow and tagged at every version.
 - `develop` is protected: PR required, `lint-and-test (22.x)` is the required status check, strict mode on (branch must be up to date). Never rename that job or its `22.x` matrix entry; the protection rule matches the check by name.
-- Releases: `chore(release): X.Y.Z` merges into `develop`, the merge commit is tagged `vX.Y.Z`, `release.yml` publishes the GitHub Release from `CHANGELOG.md` via `scripts/release-notes-from-changelog.mjs`, and `scheduled-patch-release.yml` merges `develop` into `main`.
-- Dependabot targets `develop` because `develop` is the default branch. Never add `target-branch` to `.github/dependabot.yml`: setting it disables _security_ updates for that config, so security PRs would fall back to the default branch outside the ecosystem's own routing. `dependabot-auto-merge.yml` auto-merges patch and minor on `develop`; majors are reviewed by hand.
-- Automation that opens PRs must pass `secrets.RELEASE_PAT`, not the default `GITHUB_TOKEN`: PRs created by `GITHUB_TOKEN` do not trigger workflows, so the required check never runs and auto-merge blocks forever.
+- Releases: `chore(release): X.Y.Z` merges into `develop`, the merge commit is tagged `vX.Y.Z`, `release.yml` publishes the GitHub Release from `CHANGELOG.md` via `scripts/release-notes-from-changelog.mjs`, and `main` is merged up from `develop`.
 - Conventional commit subjects, imperative mood, first line under 72 characters.
 - Changelog: prepend to `CHANGELOG.md` following its own header rules (Keep a Changelog, imperative voice, one line per bullet, 120 visible characters max, **Build / Chore / CI / Docs / Enhance / Feat / Fix / Perf / Revert / Sec / Style** labels).
 

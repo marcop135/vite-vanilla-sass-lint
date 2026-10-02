@@ -8,6 +8,8 @@
 [![Release](https://img.shields.io/github/v/release/marcop135/vite-vanilla-sass-lint)](https://github.com/marcop135/vite-vanilla-sass-lint/releases)
 [![License: MIT](https://img.shields.io/github/license/marcop135/vite-vanilla-sass-lint)](./LICENSE)
 
+> **Archived.** This repo is no longer maintained and is read-only. v1.11.1 is the final release.
+
 A [Vite](https://vitejs.dev/) starter for vanilla JavaScript and Sass with linting, formatting, tests, and a tagged-release pipeline already wired up.
 
 Use this when you want a small, framework-free static site or web app and you do not want to spend half a day configuring ESLint, Stylelint, HTMLHint, html-validate, Prettier, Vitest, Husky, and a release workflow yourself.
@@ -23,7 +25,7 @@ npm run dev
 
 Dev server runs on `http://localhost:3000`.
 
-`main` is the released mirror, tagged at every version. `develop` is the default and integration branch, where dependency updates land first; scaffold from it by dropping the `#main` suffix.
+`main` is the released mirror, tagged at every version. `develop` is the default and integration branch; scaffold from it by dropping the `#main` suffix.
 
 ## What's included
 
@@ -31,7 +33,7 @@ Dev server runs on `http://localhost:3000`.
 - **Quality:** [ESLint](https://eslint.org/), [Stylelint](https://stylelint.io/) + `stylelint-config-standard-scss`, [HTMLHint](https://htmlhint.com/), [html-validate](https://html-validate.org/), [Prettier](https://prettier.io/)
 - **Tests:** [Vitest](https://vitest.dev/) with UI + coverage modes, `jsdom` environment
 - **Vite plugins:** [`vite-plugin-html`](https://github.com/vbenjs/vite-plugin-html) (minify), [`vite-plugin-eslint2`](https://vite-plugin-eslint2.modyqyw.top/), [`vite-plugin-stylelint`](https://vite-plugin-stylelint.modyqyw.top/), [`rollup-plugin-visualizer`](https://github.com/btd/rollup-plugin-visualizer) (analyze)
-- **Automation:** Husky + lint-staged pre-commit, GitHub Actions for CI, tag-driven releases, biweekly patch releases, Dependabot auto-merge for patch/minor
+- **Automation:** Husky + lint-staged pre-commit, GitHub Actions for CI, tag-driven releases
 
 ## Scripts
 
@@ -67,7 +69,7 @@ src/
     scss/     entry: main.scss
 public/         copied as-is to dist/ (favicons, OG image, site.webmanifest)
 .github/brand/  README, OG and social image sources (npm run brand:images)
-scripts/        release helpers (bump-patch-maintenance, release-notes-from-changelog)
+scripts/        release helpers (release-notes-from-changelog)
 index.html      Vite entry, references src/assets/js/main.js
 vite.config.js  build config + bundle analyzer toggle
 ```
@@ -92,11 +94,7 @@ Production build emits ESM only and uses `sourcemap: 'hidden'`: maps are produce
 
 Changes land on `develop`, then a release commit (`chore(release): X.Y.Z`) merges to `develop`, the merge is tagged `vX.Y.Z`, and `main` is merged up from `develop`. The `release.yml` workflow then runs `release:check` against the tag and publishes a GitHub Release whose body is built from `CHANGELOG.md` by `scripts/release-notes-from-changelog.mjs`.
 
-A scheduled workflow (`scheduled-patch-release.yml`) runs the bump, PR, merge, tag, and `main` sync biweekly on the 3rd and 17th UTC. The sync merges rather than fast-forwards, so a commit that lands on `main` alone cannot wedge the pipeline. See [`CHANGELOG.md`](./CHANGELOG.md) for the full history.
-
-### Dependency updates
-
-Dependabot opens weekly version and security PRs against `develop`. `dependabot-auto-merge.yml` squash-merges patch and minor updates once `lint-and-test (22.x)` passes; major-version bumps are left open for review. A second workflow (`scheduled-npm-update.yml`) runs `npm update` on the 1st and 15th UTC, verifies it with `release:check`, and opens a PR that auto-merges on the same required check, two days before the release job runs.
+See [`CHANGELOG.md`](./CHANGELOG.md) for the full history.
 
 ### Audit gate
 
