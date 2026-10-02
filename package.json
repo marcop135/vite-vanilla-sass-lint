@@ -63,8 +63,8 @@
   },
   "homepage": "https://github.com/marcop135/vite-vanilla-sass-lint#readme",
   "devDependencies": {
-    "@vitest/coverage-v8": "^4.1.9",
-    "@vitest/ui": "^4.1.10",
+    "@vitest/coverage-v8": "^5.0.3",
+    "@vitest/ui": "^5.0.3",
     "autoprefixer": "^10.6.1",
     "eslint": "^10.11.0",
     "globals": "^17.11.0",
@@ -86,7 +86,7 @@
     "vite-plugin-eslint2": "^5.3.0",
     "vite-plugin-html": "^3.2.2",
     "vite-plugin-stylelint": "^6.3.0",
-    "vitest": "^4.1.9"
+    "vitest": "^5.0.3"
   },
   "dependencies": {
     "modern-normalize": "^3.0.1"
