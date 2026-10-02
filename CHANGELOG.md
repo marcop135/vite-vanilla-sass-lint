@@ -10,6 +10,10 @@
 
 **Labels:** **Build**, **Chore**, **CI**, **Docs**, **Enhance**, **Feat**, **Fix**, **Perf**, **Revert**, **Sec**, **Style**; append **(WIP)** only for incomplete work.
 
+## [Unreleased]
+
+- **Build:** Bump html-validate to 11, jsdom to 30, lint-staged to 17 and Vitest to 5.
+
 ## [1.11.0] - 2026-10-01
 
 - **Feat:** Add `.github/brand/` with SVG sources for the README, OG and GitHub social images in the shared sky-blue style.
